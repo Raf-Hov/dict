@@ -4,18 +4,45 @@ A modern, fast, and convenient vocabulary training application designed for Engl
 
 ---
 
-## 🚀 Quick Start
+## 📱 iPhone / iOS (iSH) Quick Start
+
+To run DictCreator directly on your **iPhone 16 Pro** using the **iSH** app:
+
+### 1. Install prerequisites in iSH:
+```bash
+apk update
+apk add python3 git
+```
+
+### 2. Run DictCreator:
+```bash
+sh run.sh web
+# or: python3 main.py --web
+```
+
+### 3. Open in Safari on your iPhone:
+Open Safari and go to:
+👉 **`http://localhost:8080`** (or `http://127.0.0.1:8080`)
+
+> 💡 **Keep iSH active in the background**:
+> DictCreator automatically enables iOS background keep-alive so the web server continues running when you switch from iSH to Safari. When iOS asks for **Location permission**, tap **"Always"** or **"While Using App"**.
+> You can also run CLI practice directly inside iSH with `sh run.sh cli`.
+
+---
+
+## 🚀 Desktop Quick Start
 
 ### 🌐 1. Modern Web Interface (Recommended)
-Run with Makefile:
+Run with turnkey script:
 ```bash
-make web
+./run.sh web
 ```
-Or with Python:
+Or with Python / Makefile:
 ```bash
-python3 -m src --web
+python3 main.py --web
+# or: make web
 ```
-This automatically launches a modern web application in your browser (`http://localhost:8080/`).
+This automatically launches the modern web application (`http://localhost:8080/`).
 
 #### Features of the Web Interface:
 * 🗂️ **Interactive Flashcards**:

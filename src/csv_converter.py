@@ -1,15 +1,18 @@
+from __future__ import annotations
+
 import csv
 import json
 from pathlib import Path
+from typing import Any, Dict, List
 
 
-def jsn_loader(file_paths: list, json_path: str) -> dict[str, dict]:
-    loaded_dicts: dict[str, dict] = {}
+def jsn_loader(file_paths: list, json_path: str) -> Dict[str, dict]:
+    loaded_dicts: Dict[str, dict] = {}
     for path in file_paths:
         if isinstance(path, str):
             path = Path(path)
         if path.suffix == '.csv':
-            dict_like: dict[str, list[str]] = {}
+            dict_like: Dict[str, List[str]] = {}
             with open(path, "r", encoding='utf-8') as file:
                 csv_reader = csv.reader(file)
                 for row in csv_reader:

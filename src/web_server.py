@@ -1,11 +1,13 @@
+from __future__ import annotations
+
 import json
 import mimetypes
 import os
 import sys
 import urllib.parse
-from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from http.server import BaseHTTPRequestHandler, HTTPServer
 from pathlib import Path
-from typing import Any, Dict
+from typing import Any, Dict, Optional
 
 from .storage import (
     add_word_to_json,
@@ -178,36 +180,138 @@ class DictHandler(BaseHTTPRequestHandler):
         self._send_json({"error": "Endpoint not found"}, status=404)
 
 
-def start_server(host: str = "127.0.0.1", port: int = 8080, open_browser: bool = True) -> None:
+class SafeHTTPServer(HTTPServer):
+    """Single-threaded HTTP server with address reuse to avoid port collision and iSH pthread bugs."""
+    allow_reuse_address = True
+    daemon_threads = True
+
+
+def is_ish() -> bool:
+    """Detects if running inside the iSH iOS app."""
+    if os.path.exists("/proc/ish") or os.path.exists("/proc/driver/ish"):
+        return True
+    if os.path.exists("/dev/location"):
+        return True
+    try:
+        if os.path.exists("/proc/version"):
+            with open("/proc/version", "r") as f:
+                if "ish" in f.read().lower():
+                    return True
+    except Exception:
+        pass
+    return False
+
+
+def get_local_ip() -> str:
+    """Attempts to find the device's local network IP."""
+    import socket
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.settimeout(0.5)
+        s.connect(("8.8.8.8", 80))
+        ip = s.getsockname()[0]
+        s.close()
+        return ip
+    except Exception:
+        return "127.0.0.1"
+
+
+def start_ish_background_keeper() -> Optional[Any]:
+    """
+    Keeps iSH running in the background on iOS when switching to Safari.
+    Reads from /dev/location which signals iOS that iSH is actively using location.
+    """
+    if not os.path.exists("/dev/location"):
+        return None
+    try:
+        import subprocess
+        proc = subprocess.Popen(
+            ["cat", "/dev/location"],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+            stdin=subprocess.DEVNULL,
+        )
+        return proc
+    except Exception:
+        return None
+
+
+def start_server(
+    host: str = "0.0.0.0",
+    port: int = 8080,
+    open_browser: bool = True,
+    enable_bg: bool = True
+) -> None:
     """Starts the HTTP server and optionally launches browser."""
     import webbrowser
 
-    server_address = (host, port)
-    try:
-        httpd = ThreadingHTTPServer(server_address, DictHandler)
-    except OSError:
-        # Try next port if busy
-        port = 8081
-        server_address = (host, port)
-        httpd = ThreadingHTTPServer(server_address, DictHandler)
-
-    url = f"http://{host}:{port}/"
-    print("\n" + "=" * 60)
-    print("🚀 DictCreator Web Interface is running!")
-    print(f"👉 URL: {url}")
-    print("✨ Convenient word practice, flashcards, audio & JSON deletion")
-    print("Press Ctrl+C to stop the server.")
-    print("=" * 60 + "\n")
-
-    if open_browser:
+    # Find an open port
+    httpd = None
+    actual_port = port
+    for p in range(port, port + 10):
         try:
-            webbrowser.open(url)
-        except Exception:
+            httpd = SafeHTTPServer((host, p), DictHandler)
+            actual_port = p
+            break
+        except OSError:
+            continue
+
+    if httpd is None:
+        print(f"\033[31m[Error] Could not bind to any port in range {port}-{port+9}\033[0m")
+        return
+
+    in_ish = is_ish()
+    local_ip = get_local_ip()
+
+    local_url = f"http://localhost:{actual_port}/"
+    ip_url = f"http://{local_ip}:{actual_port}/"
+
+    ish_keeper = None
+    if in_ish and enable_bg:
+        ish_keeper = start_ish_background_keeper()
+
+    print("\n\033[1;36m" + "═" * 58 + "\033[0m")
+    print("\033[1;32m🚀 DictCreator Web Server is running!\033[0m")
+    if in_ish:
+        print("\033[1;35m📱 [iPhone / iSH Mode Detected]\033[0m")
+        if ish_keeper:
+            print("\033[33m⚡ Background keep-alive ACTIVE (keeps iSH alive in Safari)\033[0m")
+            print("   \033[90m(If iOS asks for Location permission, tap 'Always' or 'While Using')\033[0m")
+        print(f"\n👉 \033[1mOpen Safari on this iPhone:\033[0m")
+        print(f"   \033[1;34m{local_url}\033[0m  or  \033[1;34mhttp://127.0.0.1:{actual_port}/\033[0m")
+        if local_ip != "127.0.0.1":
+            print(f"👉 \033[1mFrom another device (PC / Mac / iPad):\033[0m \033[1;34m{ip_url}\033[0m")
+    else:
+        print(f"👉 Local URL:   \033[1;34m{local_url}\033[0m")
+        if local_ip != "127.0.0.1":
+            print(f"👉 Network URL: \033[1;34m{ip_url}\033[0m")
+
+    print("\n✨ Flashcards, audio speech, quiz, and JSON management")
+    print("Press \033[1mCtrl+C\033[0m in terminal to stop.")
+    print("\033[1;36m" + "═" * 58 + "\033[0m\n")
+
+    # Only attempt browser launch on desktop with GUI display
+    if open_browser and not in_ish:
+        if sys.platform.startswith("linux") and not (os.environ.get("DISPLAY") or os.environ.get("WAYLAND_DISPLAY")):
             pass
+        else:
+            try:
+                webbrowser.open(local_url)
+            except Exception:
+                pass
 
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:
         print("\nStopping server...")
-        httpd.server_close()
+    finally:
+        if ish_keeper:
+            try:
+                ish_keeper.terminate()
+            except Exception:
+                pass
+        try:
+            httpd.server_close()
+        except Exception:
+            pass
         print("Server stopped.")

@@ -1,12 +1,15 @@
+from __future__ import annotations
+
 import random
+import shutil
 from collections import deque
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .storage import delete_word_from_json, get_project_root
 
 
-def _prompt_delete_word(word: str, source_file: Optional[Path | str] = None) -> bool:
+def _prompt_delete_word(word: str, source_file: Optional[Union[Path, str]] = None) -> bool:
     """Prompts the user to confirm deleting a word directly from JSON and performs deletion."""
     root = get_project_root()
     target_path = None
@@ -62,7 +65,7 @@ def randomizer(
     num: int,
     dict_name: str,
     is_random: bool = True,
-    source_file: Optional[Path | str] = None
+    source_file: Optional[Union[Path, str]] = None
 ) -> None:
     """
     Interactive vocabulary learning session in terminal.
@@ -83,11 +86,12 @@ def randomizer(
         available_words = all_words[num:]
 
     selected_words = deque(selected_list)
-    print(f"\n\033[1;36m═══════════════════════════════════════════════════════════════\033[0m")
-    print(f"\033[1;36m  🚀 Starting practice with '{dict_name}' ({num} words)  \033[0m")
-    print(f"\033[90m  Commands: [Enter: reveal] [n/next: continue] [s/skip: review later]\033[0m")
-    print(f"\033[90m            [d/del/delete: permanently delete word from JSON]\033[0m")
-    print(f"\033[1;36m═══════════════════════════════════════════════════════════════\033[0m\n")
+    term_cols = shutil.get_terminal_size((60, 20)).columns
+    div = "═" * max(20, min(term_cols - 2, 58))
+    print(f"\n\033[1;36m{div}\033[0m")
+    print(f"\033[1;36m  🚀 Practice: '{dict_name}' ({num} words)\033[0m")
+    print(f"\033[90m  Keys: [Enter: reveal] [n: next] [s: skip] [d: delete]\033[0m")
+    print(f"\033[1;36m{div}\033[0m\n")
 
     while selected_words:
         current_item = selected_words.popleft()
@@ -110,7 +114,7 @@ def randomizer(
         # Mode A: Sequential / Flashcard style
         if not is_random:
             print(f"{queue_status} Word: \033[1;32m{word}\033[0m")
-            ans = input("  [Enter - show translation | 'n' - next | 's' - skip | 'd' - delete from JSON]: ").strip().lower()
+            ans = input("  [Enter: show | n: next | s: skip | d: del]: ").strip().lower()
 
             if ans in ["d", "del", "delete"]:
                 if _prompt_delete_word(word, source_file):
@@ -150,7 +154,7 @@ def randomizer(
 
         # Mode B: Random / Active recall mode
         print(f"{queue_status}")
-        answer = input(f"Translate the word '\033[1;32m{word}\033[0m' [or 'n' next / 's' skip / 'd' delete]: ").strip().lower()
+        answer = input(f"Translate '{word}' [n: next / s: skip / d: del]: ").strip().lower()
 
         if answer in ["d", "del", "delete"]:
             if _prompt_delete_word(word, source_file):
@@ -212,7 +216,7 @@ def randomizer(
     print("\033[1;32m🎉 Congratulations! You have completed all words in this session!\033[0m\n")
 
 
-def _handle_terminal_examples(examples: List[Any], word: str, source_file: Optional[Path | str] = None) -> None:
+def _handle_terminal_examples(examples: List[Any], word: str, source_file: Optional[Union[Path, str]] = None) -> None:
     """Interactively displays and tests example sentences in terminal."""
     print("  \033[90m─── Examples & Sentences ───\033[0m")
     idx = 0
@@ -223,7 +227,7 @@ def _handle_terminal_examples(examples: List[Any], word: str, source_file: Optio
             am = part.get("translation_am", part.get("am", part.get("ru", "")))
             if am:
                 print(f"  \033[36mTranslation: {am}\033[0m")
-            ans = input("  English sentence [Enter - reveal / 'n' - next / 'd' - delete word]: ").strip().lower()
+            ans = input("  English sentence [Enter: show / n: next / d: del]: ").strip().lower()
             if ans in ["d", "del", "delete"]:
                 _prompt_delete_word(word, source_file)
                 break

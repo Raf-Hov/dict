@@ -1,14 +1,19 @@
-PYTHON = python3
-MAIN = src
+PYTHON ?= python3
+HOST ?= 0.0.0.0
+PORT ?= 8080
 
 run:
-	$(PYTHON) -m $(MAIN)
+	$(PYTHON) main.py
 
 web:
-	$(PYTHON) -m $(MAIN) --web
+	$(PYTHON) main.py --web --host $(HOST) --port $(PORT)
 
 cli:
-	$(PYTHON) -m $(MAIN) --cli
+	$(PYTHON) main.py --cli
 
 manage:
-	$(PYTHON) -m $(MAIN) --manage
+	$(PYTHON) main.py --manage
+
+ish-setup:
+	@echo "Installing python3 on iSH (Alpine Linux)..."
+	apk update && apk add python3

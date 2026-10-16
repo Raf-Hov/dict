@@ -1,6 +1,19 @@
+from __future__ import annotations
+
 import argparse
+import os
+import shutil
 import sys
 from pathlib import Path
+
+# Ensure UTF-8 streams for Alpine / iSH environments
+if hasattr(sys.stdout, "reconfigure"):
+    try:
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+        sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+        sys.stdin.reconfigure(encoding="utf-8", errors="replace")
+    except Exception:
+        pass
 
 from .argp import data_josn_pathfinder, get_data_files
 from .csv_converter import jsn_loader
@@ -13,7 +26,7 @@ from .storage import (
     list_data_files,
     load_words_from_file,
 )
-from .web_server import start_server
+from .web_server import is_ish, start_server
 
 
 def run_terminal_practice():
@@ -214,16 +227,18 @@ def run_csv_conversion():
 
 def main():
     parser = argparse.ArgumentParser(description="DictCreator - Vocabulary Learning & Review")
-    parser.add_argument("--web", "-w", action="store_true", help="Launch the modern Web UI in browser")
+    parser.add_argument("--web", "-w", action="store_true", help="Launch the Web UI")
     parser.add_argument("--cli", "-c", action="store_true", help="Run interactive practice directly in terminal")
     parser.add_argument("--manage", "-m", action="store_true", help="Manage and delete words from JSON in terminal")
+    parser.add_argument("--host", "-H", type=str, default="0.0.0.0", help="Host IP to bind web server (default: 0.0.0.0)")
     parser.add_argument("--port", "-p", type=int, default=8080, help="Port for the Web UI server (default: 8080)")
-    parser.add_argument("--no-browser", action="store_true", help="Do not automatically open browser when starting web server")
+    parser.add_argument("--no-browser", action="store_true", help="Do not open desktop browser")
+    parser.add_argument("--no-bg", action="store_true", help="Disable iSH iOS background keep-alive")
 
     args = parser.parse_args()
 
     if args.web:
-        start_server(port=args.port, open_browser=not args.no_browser)
+        start_server(host=args.host, port=args.port, open_browser=not args.no_browser, enable_bg=not args.no_bg)
         return
 
     if args.cli:
@@ -234,21 +249,28 @@ def main():
         run_word_manager()
         return
 
+    in_ish = is_ish()
+
     # Interactive Menu
     while True:
-        print("\n\033[1;36m╔════════════════════════════════════════════════════════════════╗\033[0m")
-        print("\033[1;36m║            📚 DictCreator - Vocabulary Trainer                 ║\033[0m")
-        print("\033[1;36m╚════════════════════════════════════════════════════════════════╝\033[0m")
-        print("  \033[1;32m[1] 🌐 Launch Modern Web UI\033[0m (Recommended: Flashcards, Audio, Delete)")
-        print("  \033[1;34m[2] 💻 Practice in Terminal\033[0m (Interactive CLI with word deletion)")
-        print("  \033[1;35m[3] 📖 View & Delete Words from JSON in Terminal\033[0m")
+        term_cols = shutil.get_terminal_size((60, 20)).columns
+        div = "─" * max(20, min(term_cols - 2, 58))
+
+        print(f"\n\033[1;36m{div}\033[0m")
+        print("\033[1;36m  📚 DictCreator - Vocabulary Trainer\033[0m")
+        if in_ish:
+            print("\033[35m  📱 Running on iPhone (iSH)\033[0m")
+        print(f"\033[1;36m{div}\033[0m")
+        print("  \033[1;32m[1] 🌐 Launch Web UI\033[0m (Recommended: Safari localhost:8080)")
+        print("  \033[1;34m[2] 💻 Practice in Terminal\033[0m (CLI flashcards & recall)")
+        print("  \033[1;35m[3] 📖 View & Delete Words in Terminal\033[0m")
         print("  \033[1;33m[4] ⚙️  Convert CSV to JSON\033[0m")
         print("  \033[90m[0] ❌ Exit\033[0m")
-        print("\033[1;36m────────────────────────────────────────────────────────────────\033[0m")
+        print(f"\033[1;36m{div}\033[0m")
 
         choice = input("Select an option [default: 1]: ").strip()
         if not choice or choice == "1":
-            start_server(port=args.port, open_browser=not args.no_browser)
+            start_server(host=args.host, port=args.port, open_browser=not args.no_browser, enable_bg=not args.no_bg)
             break
         elif choice == "2":
             run_terminal_practice()

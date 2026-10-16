@@ -1,8 +1,10 @@
+from __future__ import annotations
+
 import csv
 import json
 import os
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional, Tuple, Union
 
 
 def get_project_root() -> Path:
@@ -98,7 +100,7 @@ def normalize_word_entry(word: str, raw_val: Any, source_file: str = "") -> Dict
     }
 
 
-def load_words_from_file(file_path: Path | str) -> List[Dict[str, Any]]:
+def load_words_from_file(file_path: Union[Path, str]) -> List[Dict[str, Any]]:
     """Loads and normalizes words from a JSON or CSV file."""
     path = Path(file_path)
     if not path.is_absolute():
@@ -167,14 +169,37 @@ def load_words_from_file(file_path: Path | str) -> List[Dict[str, Any]]:
 
 
 def _safe_write_json(file_path: Path, data: Any) -> None:
-    """Safely writes JSON data to file using atomic replacement."""
+    """Safely writes JSON data to file with fallback for iSH / iOS filesystems."""
     temp_file = file_path.with_suffix(f"{file_path.suffix}.tmp")
-    with open(temp_file, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
-    temp_file.replace(file_path)
+    try:
+        with open(temp_file, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+        try:
+            os.replace(temp_file, file_path)
+        except OSError:
+            # Fallback for iSH / iOS mounted filesystems where atomic replace fails
+            if file_path.exists():
+                try:
+                    file_path.unlink()
+                except OSError:
+                    pass
+            try:
+                temp_file.rename(file_path)
+            except OSError:
+                with open(file_path, "w", encoding="utf-8") as f:
+                    json.dump(data, f, ensure_ascii=False, indent=2)
+                if temp_file.exists():
+                    try:
+                        temp_file.unlink()
+                    except OSError:
+                        pass
+    except Exception:
+        # Emergency direct write
+        with open(file_path, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
 
 
-def delete_word_from_json(file_path: Path | str, target_word: str) -> Dict[str, Any]:
+def delete_word_from_json(file_path: Union[Path, str], target_word: str) -> Dict[str, Any]:
     """
     Permanently deletes a word directly from the JSON file on disk.
     Supports both list format (like vocabulary.json) and dict format.
@@ -249,7 +274,7 @@ def delete_word_from_json(file_path: Path | str, target_word: str) -> Dict[str, 
 
 
 def add_word_to_json(
-    file_path: Path | str,
+    file_path: Union[Path, str],
     word: str,
     translation: str,
     examples: Optional[List[Dict[str, str]]] = None
@@ -309,7 +334,7 @@ def add_word_to_json(
 
 
 def update_word_in_json(
-    file_path: Path | str,
+    file_path: Union[Path, str],
     old_word: str,
     new_word: str,
     translation: str,
