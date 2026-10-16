@@ -75,10 +75,12 @@ class DictHandler(BaseHTTPRequestHandler):
             folder = query.get("folder", ["data"])[0]
             folders = get_available_folders()
             files = list_data_files(folder)
+            total_words_in_folder = sum(f.get("word_count", 0) for f in files)
             self._send_json({
                 "folders": folders,
                 "current_folder": folder,
-                "files": files
+                "files": files,
+                "total_words": total_words_in_folder
             })
             return
 
@@ -87,6 +89,31 @@ class DictHandler(BaseHTTPRequestHandler):
             file_name = query.get("file", ["vocabulary.json"])[0]
             folder_name = query.get("folder", ["data"])[0]
             root = get_project_root()
+
+            if file_name in ["__all__", "all"]:
+                folder_path = root / folder_name
+                all_files = sorted(list(folder_path.glob("*.json")) + list(folder_path.glob("*.csv")))
+                merged_words = []
+                seen_words = set()
+                for fp in all_files:
+                    try:
+                        w_list = load_words_from_file(fp)
+                        for w in w_list:
+                            k = w.get("word", "").strip().lower()
+                            if k and k not in seen_words:
+                                seen_words.add(k)
+                                merged_words.append(w)
+                    except Exception:
+                        pass
+                self._send_json({
+                    "file": "__all__",
+                    "folder": folder_name,
+                    "is_json": False,
+                    "total_count": len(merged_words),
+                    "words": merged_words
+                })
+                return
+
             target_path = root / folder_name / file_name
 
             if not target_path.exists():
@@ -134,8 +161,18 @@ class DictHandler(BaseHTTPRequestHandler):
                 self._send_json({"error": "Word parameter is required"}, status=400)
                 return
 
-            target_path = root / folder_name / file_name
-            result = delete_word_from_json(target_path, word)
+            if file_name in ["__all__", "all"]:
+                folder_path = root / folder_name
+                result = {"success": False, "error": f"Word '{word}' not found in any JSON file"}
+                for jf in folder_path.glob("*.json"):
+                    res = delete_word_from_json(jf, word)
+                    if res.get("success"):
+                        result = res
+                        break
+            else:
+                target_path = root / folder_name / file_name
+                result = delete_word_from_json(target_path, word)
+
             status = 200 if result.get("success") else 400
             self._send_json(result, status=status)
             return

@@ -46,12 +46,21 @@ This automatically launches the modern web application (`http://localhost:8080/`
 
 #### Features of the Web Interface:
 * 🗂️ **Interactive Flashcards**:
+  - **Word count selection**: Choose 5, 10, 20, 50, all words, or enter any custom count (`Своё: N`).
   - View word and pronunciation audio 🔊 (built-in speech synthesis, works offline without external APIs).
   - Click or press `Space` to reveal translations and context example sentences.
   - Rate words: `I Know This` (`1` / `→`) or `Review Later` (`2` / `↓`).
+  - Mobile swipe gestures: swipe right (know) or swipe left (repeat later).
   - 🗑️ **Delete from JSON**: Click `Delete from JSON` (`Del`) to immediately and permanently remove the word directly from your JSON file (`vocabulary.json`) with confirmation.
-* ✍️ **Quiz & Recall Mode**:
-  - Type English translations with instant feedback and tolerant matching.
+* ✍️ **Quiz & Recall Mode (Equivalent to Terminal Practice)**:
+  - **Select how many words to ask**: Choose quick presets (5, 10, 20, 50, all) or input any custom number (`1 - Total`, default 20).
+  - **Random or sequential order**: `🎲 Random` or `🔢 In order`.
+  - **Practice directions**: `🔤 Word ➔ Translation` (prompt English, answer translation — just like terminal practice!), `🌐 Translation ➔ Word`, or `🎲 Mixed`.
+  - **Input formats**: `✍️ Typing` mode with smart tolerant matching (handles synonyms, articles, punctuation, and subwords) or `🔘 4 Multiple Choice` for fast mobile practice.
+  - **Active learning queue**: Failed or skipped words move to the end of the queue so you keep practicing until 100% of chosen words are mastered!
+  - 💡 Context example sentences with masked word hints.
+  - 🏆 Session completion screen with first-try accuracy stats, mistake review, and one-click repeat of difficult words.
+* 🌟 **Combined Vocabulary**: Option to practice all words from all files in a folder simultaneously (`🌟 Все файлы папки`).
 * 📖 **JSON Dictionary Manager**:
   - Search & filter all words in real time.
   - 🗑️ Direct deletion of any word from the JSON file on disk.

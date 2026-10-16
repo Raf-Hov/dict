@@ -389,16 +389,270 @@
       font-size: 0.85rem;
     }
 
-    /* Actions Bar */
-    .card-actions {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1.2fr;
+    /* Session Settings Bar */
+    .session-bar {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.85rem 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
       gap: 0.75rem;
+    }
+
+    .session-section {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .session-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .pill-group {
+      display: inline-flex;
+      background-color: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 3px;
+      gap: 2px;
+    }
+
+    .pill-btn {
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      padding: 0.35rem 0.65rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .pill-btn:hover {
+      color: var(--text-main);
+    }
+
+    .pill-btn.active {
+      background-color: var(--accent);
+      color: #0f172a;
+      font-weight: 700;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    .pill-toggle {
+      border: 1px solid var(--border);
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: var(--transition);
+      user-select: none;
+    }
+
+    .pill-toggle.active {
+      border-color: var(--accent);
+      background-color: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+    }
+
+    .pill-select {
+      padding: 0.35rem 0.65rem;
+      font-size: 0.8rem;
+      border-radius: 999px;
+    }
+
+    .custom-size-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background-color: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 2px 5px 2px 8px;
+      transition: var(--transition);
+    }
+
+    .custom-size-box:focus-within {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+    }
+
+    .custom-size-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      user-select: none;
+    }
+
+    .custom-size-input {
+      width: 48px;
+      background: transparent;
+      border: none;
+      color: var(--text-main);
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-align: center;
+      outline: none;
+    }
+
+    .custom-size-btn {
+      background-color: var(--accent);
+      color: #0f172a;
+      border: none;
+      border-radius: 999px;
+      padding: 0.2rem 0.55rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      user-select: none;
+    }
+
+    .custom-size-btn:hover {
+      background-color: var(--accent-hover);
+      color: white;
+    }
+
+    /* Sequential Batch Navigation Bar */
+    .batch-nav-bar {
+      background-color: var(--bg-secondary);
+      border: 1px dashed var(--border);
+      border-radius: var(--radius-sm);
+      padding: 0.6rem 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      animation: fadeIn 0.2s ease;
+    }
+
+    .batch-nav-btn {
+      background-color: var(--bg-tertiary);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.8rem;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .batch-nav-btn:hover:not(:disabled) {
+      background-color: var(--accent);
+      color: #0f172a;
+    }
+
+    .batch-nav-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .batch-nav-info {
+      font-weight: 600;
+      color: var(--accent);
+      text-align: center;
+      flex: 1;
+    }
+
+    .session-tag {
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    /* Card Touch / Swipe Container */
+    .card-touch-container {
+      position: relative;
+      width: 100%;
+    }
+
+    .card {
+      touch-action: pan-y;
+      will-change: transform;
+    }
+
+    .swipe-stamp {
+      position: absolute;
+      top: 1.5rem;
+      padding: 0.45rem 1rem;
+      border-radius: var(--radius-sm);
+      font-weight: 800;
+      font-size: 1.15rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      pointer-events: none;
+      opacity: 0;
+      z-index: 15;
+      transition: opacity 0.1s ease;
+    }
+
+    .swipe-stamp-know {
+      right: 1.5rem;
+      color: var(--success);
+      border: 3px solid var(--success);
+      background: var(--success-bg);
+      transform: rotate(12deg);
+    }
+
+    .swipe-stamp-skip {
+      left: 1.5rem;
+      color: var(--warning);
+      border: 3px solid var(--warning);
+      background: rgba(245, 158, 11, 0.15);
+      transform: rotate(-12deg);
+    }
+
+    .speaker-btn.speaking {
+      animation: pulseSpeaker 0.6s infinite alternate;
+      border-color: var(--accent);
+      background-color: var(--accent);
+      color: white;
+    }
+
+    @keyframes pulseSpeaker {
+      from { transform: scale(1); }
+      to { transform: scale(1.18); box-shadow: 0 0 14px var(--accent); }
+    }
+
+    /* Actions Bar */
+    .card-actions-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr 1.3fr 1fr;
+      gap: 0.65rem;
     }
 
     .btn {
       border: none;
-      padding: 0.75rem 1.25rem;
+      padding: 0.75rem 1rem;
       border-radius: var(--radius-sm);
       font-weight: 600;
       cursor: pointer;
@@ -407,10 +661,18 @@
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    .btn:active {
-      transform: scale(0.98);
+    .btn:active:not(:disabled) {
+      transform: scale(0.97);
+    }
+
+    .btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      pointer-events: none;
     }
 
     .btn-secondary {
@@ -418,7 +680,7 @@
       color: var(--text-main);
       border: 1px solid var(--border);
     }
-    .btn-secondary:hover {
+    .btn-secondary:hover:not(:disabled) {
       background-color: var(--bg-tertiary);
     }
 
@@ -427,7 +689,7 @@
       color: #0f172a;
       font-weight: 700;
     }
-    .btn-primary:hover {
+    .btn-primary:hover:not(:disabled) {
       background-color: var(--accent-hover);
       color: white;
     }
@@ -436,8 +698,18 @@
       background-color: var(--success);
       color: white;
     }
-    .btn-success:hover {
+    .btn-success:hover:not(:disabled) {
       background-color: #0d9488;
+    }
+
+    .btn-warning {
+      background-color: rgba(245, 158, 11, 0.15);
+      color: var(--warning);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+    }
+    .btn-warning:hover:not(:disabled) {
+      background-color: var(--warning);
+      color: #0f172a;
     }
 
     .btn-danger {
@@ -445,18 +717,106 @@
       color: var(--danger);
       border: 1px solid rgba(239, 68, 68, 0.3);
     }
-    .btn-danger:hover {
+    .btn-danger:hover:not(:disabled) {
       background-color: var(--danger);
       color: white;
+    }
+
+    /* Session Completion Summary Card */
+    .finish-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--card-shadow);
+      padding: 2.5rem 1.75rem;
+      text-align: center;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .finish-icon {
+      font-size: 3.5rem;
+      animation: bounceIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes bounceIn {
+      0% { transform: scale(0.3); opacity: 0; }
+      70% { transform: scale(1.1); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .finish-title {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .finish-subtitle {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      max-width: 440px;
+    }
+
+    .finish-stats-row {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    .finish-stat-box {
+      background-color: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 105px;
+    }
+
+    .finish-stat-num {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    .finish-stat-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .finish-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      width: 100%;
+      max-width: 440px;
     }
 
     /* Keyboard shortcuts helper */
     .shortcuts-bar {
       display: flex;
       justify-content: center;
-      gap: 1.25rem;
+      gap: 1.1rem;
       font-size: 0.8rem;
       color: var(--text-muted);
+      flex-wrap: wrap;
+    }
+
+    .mobile-gestures-hint {
+      display: none;
+      justify-content: center;
+      gap: 0.75rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-align: center;
       flex-wrap: wrap;
     }
 
@@ -501,16 +861,61 @@
       margin-bottom: 0.5rem;
     }
 
+    .quiz-word-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.35rem;
+    }
+
     .quiz-word {
-      font-size: 2.25rem;
+      font-size: 2.35rem;
       font-weight: 800;
       color: var(--text-main);
+      text-align: center;
+      line-height: 1.25;
+    }
+
+    .quiz-context-hint-btn {
+      background: none;
+      border: none;
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 0.35rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: var(--transition);
+    }
+    .quiz-context-hint-btn:hover {
+      text-decoration: underline;
+      color: var(--accent-hover);
+    }
+
+    .quiz-context-box {
+      background-color: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 1rem;
+      font-size: 0.9rem;
+      color: var(--text-main);
+      margin-top: 0.75rem;
+      animation: fadeIn 0.2s ease;
+      text-align: left;
+    }
+
+    .quiz-input-section {
+      width: 100%;
     }
 
     .quiz-input-group {
       display: flex;
       gap: 0.75rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
     }
 
     .quiz-input {
@@ -527,14 +932,81 @@
 
     .quiz-input:focus {
       border-color: var(--accent);
+      box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+    }
+
+    .quiz-options-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    @media (max-width: 640px) {
+      .quiz-options-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .quiz-option-btn {
+      background-color: var(--bg-primary);
+      border: 2px solid var(--border);
+      color: var(--text-main);
+      border-radius: var(--radius-sm);
+      padding: 0.85rem 1rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      transition: var(--transition);
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .quiz-option-btn:hover:not(:disabled) {
+      border-color: var(--accent);
+      background-color: rgba(56, 189, 248, 0.08);
+      transform: translateY(-1px);
+    }
+
+    .quiz-option-btn.correct {
+      border-color: var(--success) !important;
+      background-color: var(--success-bg) !important;
+      color: var(--success) !important;
+      font-weight: 700;
+    }
+
+    .quiz-option-btn.wrong {
+      border-color: var(--danger) !important;
+      background-color: var(--danger-bg) !important;
+      color: var(--danger) !important;
+    }
+
+    .quiz-option-key {
+      background-color: var(--bg-tertiary);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      flex-shrink: 0;
     }
 
     .quiz-feedback {
       padding: 1rem;
       border-radius: var(--radius-sm);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
       display: none;
       animation: fadeIn 0.2s ease;
+      font-size: 0.95rem;
+      line-height: 1.5;
     }
 
     .quiz-feedback.correct {
@@ -549,6 +1021,25 @@
       background-color: var(--danger-bg);
       border: 1px solid var(--danger);
       color: var(--danger);
+    }
+
+    .quiz-footer-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      padding-top: 1.25rem;
+      border-top: 1px dashed var(--border);
+    }
+    @media (max-width: 640px) {
+      .quiz-footer-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+      .quiz-footer-actions #quizDeleteBtn {
+        grid-column: span 2;
+      }
     }
 
     /* Dictionary Tab (Words Management) */
@@ -805,9 +1296,82 @@
       .header-container {
         flex-direction: column;
         align-items: stretch;
+        gap: 0.6rem;
       }
-      .card-actions {
-        grid-template-columns: 1fr;
+      .controls-bar {
+        justify-content: space-between;
+      }
+      .controls-bar select {
+        flex: 1;
+        min-width: 0;
+      }
+      .tabs-nav {
+        padding: 0 0.5rem;
+      }
+      .tabs-container {
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+      .tab-btn {
+        padding: 0.75rem 0.75rem;
+        font-size: 0.85rem;
+      }
+      main {
+        padding: 1rem 0.6rem;
+      }
+      .card {
+        padding: 2rem 1.25rem;
+        min-height: 330px;
+      }
+      .card-word-title {
+        font-size: 2rem;
+      }
+      .session-bar {
+        padding: 0.75rem;
+        gap: 0.6rem;
+      }
+      .session-section {
+        width: 100%;
+        justify-content: space-between;
+      }
+      .pill-group {
+        overflow-x: auto;
+      }
+      .card-actions-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+        gap: 0.6rem;
+      }
+      /* Top row: Back & Delete */
+      .card-actions-grid #backBtn {
+        grid-column: 1;
+        grid-row: 1;
+        min-height: 44px;
+      }
+      .card-actions-grid #deleteWordBtn {
+        grid-column: 2;
+        grid-row: 1;
+        min-height: 44px;
+      }
+      /* Big bottom row for easy thumb tap on iPhone */
+      .card-actions-grid #skipBtn {
+        grid-column: 1;
+        grid-row: 2;
+        min-height: 54px;
+        font-size: 1rem;
+      }
+      .card-actions-grid #knowBtn {
+        grid-column: 2;
+        grid-row: 2;
+        min-height: 54px;
+        font-size: 1rem;
+      }
+      .shortcuts-bar.desktop-only {
+        display: none;
+      }
+      .mobile-gestures-hint {
+        display: flex;
       }
       .quiz-input-group {
         flex-direction: column;
@@ -861,79 +1425,341 @@
     <!-- Tab 1: Cards Practice -->
     <div id="tab-cards" class="tab-content active">
       <div class="flashcard-wrapper">
+
+        <!-- Session Controls Toolbar -->
+        <div class="session-bar">
+          <div class="session-section">
+            <span class="session-label">Порция:</span>
+            <div class="pill-group" id="batchSizePills">
+              <button class="pill-btn" data-size="5">5</button>
+              <button class="pill-btn active" data-size="10">10</button>
+              <button class="pill-btn" data-size="20">20</button>
+              <button class="pill-btn" data-size="50">50</button>
+              <button class="pill-btn" data-size="0">Все</button>
+            </div>
+            <div class="custom-size-box" title="Задайте своё количество слов для порции (1 - N)">
+              <span class="custom-size-label">Своё:</span>
+              <input type="number" id="cardsCustomSizeInput" class="custom-size-input" placeholder="20" min="1">
+              <button id="cardsCustomSizeBtn" class="custom-size-btn" title="Применить">OK</button>
+            </div>
+          </div>
+
+          <div class="session-section">
+            <span class="session-label">Режим:</span>
+            <div class="pill-group" id="sessionModePills">
+              <button class="pill-btn active" data-mode="random" title="Случайные слова из файла">🎲 Случайно</button>
+              <button class="pill-btn" data-mode="seq" title="Слова по порядку порциями">🔢 По порядку</button>
+            </div>
+          </div>
+
+          <div class="session-section">
+            <button id="autoSpeechToggle" class="pill-toggle" title="Автоматически озвучивать слово при появлении (клавиша A)">
+              <span id="autoSpeechIcon">🔇</span>
+              <span>Авто-звук: <b id="autoSpeechStatus">Выкл</b></span>
+            </button>
+            <select id="speechRateSelect" class="select-styled pill-select" title="Скорость произношения">
+              <option value="0.85">0.85x</option>
+              <option value="0.95" selected>1.0x</option>
+              <option value="1.15">1.15x</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Sequential Batch Navigation (shown in sequential mode) -->
+        <div id="seqBatchNav" class="batch-nav-bar" style="display: none;">
+          <button id="prevBatchBtn" class="batch-nav-btn" title="Предыдущая порция слов">◀ Назад</button>
+          <span id="batchInfoText" class="batch-nav-info">Порция 1 / 50 (слова 1–10 из 500)</span>
+          <button id="nextBatchBtn" class="batch-nav-btn" title="Следующая порция слов">Вперёд ▶</button>
+        </div>
+
+        <!-- Progress Header -->
         <div class="progress-bar-container">
           <div class="progress-info">
-            <span id="cardProgressText">Card 0 of 0</span>
-            <span id="cardQueueText">Queue: 0 remaining</span>
+            <span id="cardProgressText">Слово 1 из 10</span>
+            <span id="cardSessionBadge" class="session-tag">Сессия: 10 слов</span>
+            <span id="cardQueueText">Очередь: 10</span>
           </div>
           <div class="progress-bar">
             <div id="cardProgressFill" class="progress-fill"></div>
           </div>
         </div>
 
-        <div id="flashCard" class="card" title="Click or press Space to reveal translation">
-          <div class="card-badge" id="cardBadge">#1</div>
-          
-          <div class="card-word-title">
-            <span id="currentWordText">Loading...</span>
-            <button id="cardSpeakerBtn" class="speaker-btn" title="Pronounce word (P)">🔊</button>
+        <!-- Touch / Swipe Card Container -->
+        <div class="card-touch-container">
+          <div id="swipeStampKnow" class="swipe-stamp swipe-stamp-know">ЗНАЮ ✅</div>
+          <div id="swipeStampSkip" class="swipe-stamp swipe-stamp-skip">🔄 ПОВТОРИТЬ</div>
+
+          <div id="flashCard" class="card" title="Нажмите на карточку или Пробел, чтобы перевернуть">
+            <div class="card-badge" id="cardBadge">#1</div>
+            
+            <div class="card-word-title">
+              <span id="currentWordText">Loading...</span>
+              <button id="cardSpeakerBtn" class="speaker-btn" title="Озвучить слово (клавиша P)">🔊</button>
+            </div>
+
+            <div id="cardRevealHint" class="card-reveal-hint">
+              <span>💡 Нажмите или <b>Space</b> — показать перевод</span>
+            </div>
+
+            <div id="cardRevealedContent" class="revealed-content" style="display: none;">
+              <div class="translation-title" id="currentTranslationText">Translation</div>
+              <div class="examples-list" id="currentExamplesList">
+                <!-- Example items injected here -->
+              </div>
+            </div>
           </div>
 
-          <div id="cardRevealHint" class="card-reveal-hint">
-            <span>💡 Click card or press <b>Space</b> to reveal</span>
-          </div>
+          <!-- Session Completion Card -->
+          <div id="sessionFinishedCard" class="finish-card">
+            <div class="finish-icon">🎉</div>
+            <div class="finish-title">Порция завершена!</div>
+            <div class="finish-subtitle" id="finishSubtitleText">Все слова из этой серии успешно пройдены.</div>
 
-          <div id="cardRevealedContent" class="revealed-content" style="display: none;">
-            <div class="translation-title" id="currentTranslationText">Translation</div>
-            <div class="examples-list" id="currentExamplesList">
-              <!-- Example items injected here -->
+            <div class="finish-stats-row">
+              <div class="finish-stat-box">
+                <span class="finish-stat-num" id="finishTotalWords">10</span>
+                <span class="finish-stat-label">Слов в серии</span>
+              </div>
+              <div class="finish-stat-box">
+                <span class="finish-stat-num" style="color: var(--success);" id="finishKnownFirstTry">8</span>
+                <span class="finish-stat-label">С 1-го раза</span>
+              </div>
+              <div class="finish-stat-box">
+                <span class="finish-stat-num" style="color: var(--warning);" id="finishDifficultCount">2</span>
+                <span class="finish-stat-label">Потребовали повтора</span>
+              </div>
+            </div>
+
+            <div class="finish-actions">
+              <button id="finishRepeatDifficultBtn" class="btn btn-warning" style="display: none;">
+                <span>🔁</span> Повторить сложные слова (<span id="finishDifficultNum">0</span>)
+              </button>
+              <button id="finishNextBatchBtn" class="btn btn-primary" style="display: none;">
+                <span>➡️</span> Следующие 10 слов
+              </button>
+              <button id="finishNewRandomBtn" class="btn btn-primary">
+                <span>🎲</span> Новые случайные слова
+              </button>
+              <button id="finishRestartBtn" class="btn btn-secondary">
+                <span>🔄</span> Пройти эту же порцию ещё раз
+              </button>
+              <button id="finishUndoBtn" class="btn btn-secondary" style="border: 1px dashed var(--border);">
+                <span>⬅</span> Вернуться к последнему слову
+              </button>
             </div>
           </div>
         </div>
 
-        <div class="card-actions">
-          <button id="skipBtn" class="btn btn-secondary" title="Repeat later (2 or ↓)">
-            <span>🔄</span> Review Later
+        <!-- Action Buttons (Ergonomic layout for Mobile & Desktop) -->
+        <div id="cardActionsBar" class="card-actions-grid">
+          <button id="backBtn" class="btn btn-secondary" title="Вернуться к предыдущему слову (← или Z)" disabled>
+            <span>⬅</span> Назад
           </button>
-          <button id="knowBtn" class="btn btn-success" title="Known word (1 or →)">
-            <span>✅</span> I Know This
+          <button id="skipBtn" class="btn btn-warning" title="Повторить позже / отправить в конец очереди (↓ или 2)">
+            <span>🔄</span> Позже
           </button>
-          <button id="deleteWordBtn" class="btn btn-danger" title="Permanently delete word from JSON (Del)">
-            <span>🗑️</span> Delete from JSON
+          <button id="knowBtn" class="btn btn-success" title="Знаю это слово (→ или 1)">
+            <span>✅</span> Знаю
+          </button>
+          <button id="deleteWordBtn" class="btn btn-danger" title="Удалить слово навсегда из JSON (Del)">
+            <span>🗑️</span>
           </button>
         </div>
 
-        <div class="shortcuts-bar">
-          <span><span class="kbd">Space</span> Reveal / Flip</span>
-          <span><span class="kbd">1</span> Know it</span>
-          <span><span class="kbd">2</span> Repeat later</span>
-          <span><span class="kbd">Del</span> Delete from JSON</span>
-          <span><span class="kbd">P</span> Pronounce</span>
+        <!-- Shortcuts Helper: Desktop -->
+        <div id="shortcutsBar" class="shortcuts-bar desktop-only">
+          <span><span class="kbd">Space</span> Перевернуть</span>
+          <span><span class="kbd">→ / 1</span> Знаю</span>
+          <span><span class="kbd">↓ / 2</span> Позже</span>
+          <span><span class="kbd">← / Z</span> Назад</span>
+          <span><span class="kbd">P</span> Озвучить</span>
+          <span><span class="kbd">A</span> Авто-звук</span>
+          <span><span class="kbd">Del</span> Удалить</span>
         </div>
+
+        <!-- Gestures Hint: Mobile -->
+        <div class="mobile-gestures-hint">
+          <span>👉 Свайп вправо: Знаю</span>
+          <span>👈 Свайп влево: Позже</span>
+          <span>👆 Нажатие: Перевернуть</span>
+        </div>
+
       </div>
     </div>
 
     <!-- Tab 2: Quiz & Recall -->
     <div id="tab-quiz" class="tab-content">
       <div class="quiz-container">
-        <div class="quiz-card">
-          <div class="quiz-prompt">
-            <div class="quiz-label">Translate this to English:</div>
-            <div class="quiz-word" id="quizPromptWord">Loading...</div>
+
+        <!-- Quiz Session Toolbar -->
+        <div class="session-bar quiz-session-bar">
+          <div class="session-section">
+            <span class="session-label">Слов в квизе:</span>
+            <div class="pill-group" id="quizSizePills">
+              <button class="pill-btn" data-size="5">5</button>
+              <button class="pill-btn" data-size="10">10</button>
+              <button class="pill-btn active" data-size="20">20</button>
+              <button class="pill-btn" data-size="50">50</button>
+              <button class="pill-btn" data-size="0">Все</button>
+            </div>
+            <div class="custom-size-box" title="Задайте любое количество слов для квиза (1 - N)">
+              <span class="custom-size-label">Своё:</span>
+              <input type="number" id="quizCustomSizeInput" class="custom-size-input" placeholder="20" min="1">
+              <button id="quizCustomSizeBtn" class="custom-size-btn" title="Применить количество">OK</button>
+            </div>
           </div>
 
-          <div class="quiz-input-group">
-            <input type="text" id="quizInput" class="quiz-input" placeholder="Type the English translation..." autocomplete="off">
-            <button id="quizCheckBtn" class="btn btn-primary">Check</button>
+          <div class="session-section">
+            <span class="session-label">Режим:</span>
+            <div class="pill-group" id="quizModePills">
+              <button class="pill-btn active" data-mode="random" title="Случайные слова из словаря (как в терминале)">🎲 Случайно</button>
+              <button class="pill-btn" data-mode="seq" title="Слова по порядку порциями">🔢 По порядку</button>
+            </div>
           </div>
 
-          <div id="quizFeedback" class="quiz-feedback"></div>
+          <div class="session-section">
+            <span class="session-label">Формат:</span>
+            <div class="pill-group" id="quizFormatPills">
+              <button class="pill-btn active" data-format="typing" title="Печатать ответ вручную с клавиатуры">✍️ Ввод</button>
+              <button class="pill-btn" data-format="choice" title="Выбор правильного ответа из 4 вариантов">🔘 4 варианта</button>
+            </div>
+          </div>
 
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem;">
-            <button id="quizSkipBtn" class="btn btn-secondary">Next Word ➔</button>
-            <button id="quizDeleteBtn" class="btn btn-danger" title="Delete this word from JSON">🗑️ Delete from JSON</button>
+          <div class="session-section">
+            <span class="session-label">Направление:</span>
+            <div class="pill-group" id="quizDirectionPills">
+              <button class="pill-btn active" data-dir="word_to_trans" title="Вопрос: английское слово, Ответ: перевод (как в терминале)">🔤 Слово ➔ Перевод</button>
+              <button class="pill-btn" data-dir="trans_to_word" title="Вопрос: перевод, Ответ: английское слово">🌐 Перевод ➔ Слово</button>
+              <button class="pill-btn" data-dir="mixed" title="Случайная смена направления">🎲 Смешанный</button>
+            </div>
           </div>
         </div>
+
+        <!-- Sequential Batch Navigation (shown in sequential mode) -->
+        <div id="quizSeqBatchNav" class="batch-nav-bar" style="display: none;">
+          <button id="quizPrevBatchBtn" class="batch-nav-btn" title="Предыдущая порция слов">◀ Назад</button>
+          <span id="quizBatchInfoText" class="batch-nav-info">Порция 1 / 10 (слова 1–20 из 200)</span>
+          <button id="quizNextBatchBtn" class="batch-nav-btn" title="Следующая порция слов">Вперёд ▶</button>
+        </div>
+
+        <!-- Quiz Progress Bar Header -->
+        <div class="progress-bar-container">
+          <div class="progress-info">
+            <span id="quizProgressText">Слово 1 из 20</span>
+            <span id="quizSessionBadge" class="session-tag">Квиз: 20 слов</span>
+            <span id="quizStatsBadge" style="font-weight: 600; font-size: 0.8rem; color: var(--text-muted);">
+              ✅ <b id="quizScoreCorrect" style="color: var(--success);">0</b> / ❌ <b id="quizScoreWrong" style="color: var(--danger);">0</b>
+            </span>
+            <span id="quizQueueText">Очередь: 20</span>
+          </div>
+          <div class="progress-bar">
+            <div id="quizProgressFill" class="progress-fill"></div>
+          </div>
+        </div>
+
+        <!-- Active Quiz Card -->
+        <div class="quiz-card" id="quizActiveCard">
+          <div class="card-badge" id="quizCardBadge">#1 / 20</div>
+
+          <div class="quiz-prompt">
+            <div class="quiz-label" id="quizPromptLabel">Переведите на русский / армянский:</div>
+            <div class="quiz-word-row">
+              <span class="quiz-word" id="quizPromptWord">Loading...</span>
+              <button id="quizSpeakerBtn" class="speaker-btn" title="Озвучить слово (клавиша P)">🔊</button>
+            </div>
+            <div>
+              <button id="quizContextHintBtn" class="quiz-context-hint-btn">💡 Показать пример контекста</button>
+              <div id="quizContextHintBox" class="quiz-context-box" style="display: none;"></div>
+            </div>
+          </div>
+
+          <!-- Typing Mode Container -->
+          <div id="quizTypingContainer" class="quiz-input-section">
+            <div class="quiz-input-group">
+              <input type="text" id="quizInput" class="quiz-input" placeholder="Введите перевод..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+              <button id="quizCheckBtn" class="btn btn-primary" style="min-width: 130px;">Проверить</button>
+            </div>
+          </div>
+
+          <!-- Multiple Choice Mode Container -->
+          <div id="quizChoiceContainer" class="quiz-options-grid" style="display: none;">
+            <!-- 4 Option buttons rendered dynamically by JavaScript -->
+          </div>
+
+          <!-- Feedback message (Correct / Wrong) -->
+          <div id="quizFeedback" class="quiz-feedback"></div>
+
+          <!-- Next Button row after answer is given -->
+          <div id="quizNextBtnRow" style="display: none; margin-top: 0.5rem; text-align: center;">
+            <button id="quizNextBtn" class="btn btn-primary" style="width: 100%; max-width: 340px; margin: 0 auto; min-height: 48px; font-size: 1rem;">
+              <span>Следующее слово ➔ (Enter)</span>
+            </button>
+          </div>
+
+          <!-- Footer Action Buttons -->
+          <div class="quiz-footer-actions">
+            <button id="quizGiveUpBtn" class="btn btn-secondary" title="Показать правильный ответ и повторить слово позже">
+              <span>💡 Показать ответ</span>
+            </button>
+            <button id="quizSkipBtn" class="btn btn-warning" title="Пропустить и отложить в конец очереди (клавиша S)">
+              <span>🔄 В конец очереди</span>
+            </button>
+            <button id="quizDeleteBtn" class="btn btn-danger" title="Удалить слово навсегда из JSON (клавиша Del)">
+              <span>🗑️</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Quiz Completion Screen -->
+        <div id="quizFinishedCard" class="finish-card" style="display: none;">
+          <div class="finish-icon">🏆</div>
+          <div class="finish-title">Квиз успешно завершён!</div>
+          <div class="finish-subtitle" id="quizFinishSubtitle">Отличный результат! Все выбранные слова пройдены и закреплены.</div>
+
+          <div class="finish-stats-row">
+            <div class="finish-stat-box">
+              <span class="finish-stat-num" id="quizFinishTotalWords">20</span>
+              <span class="finish-stat-label">Слов в квизе</span>
+            </div>
+            <div class="finish-stat-box">
+              <span class="finish-stat-num" style="color: var(--success);" id="quizFinishFirstTry">18</span>
+              <span class="finish-stat-label">С 1-го раза</span>
+            </div>
+            <div class="finish-stat-box">
+              <span class="finish-stat-num" style="color: var(--warning);" id="quizFinishMistakes">2</span>
+              <span class="finish-stat-label">С ошибками</span>
+            </div>
+            <div class="finish-stat-box">
+              <span class="finish-stat-num" style="color: var(--accent);" id="quizFinishAccuracy">90%</span>
+              <span class="finish-stat-label">Точность</span>
+            </div>
+          </div>
+
+          <div class="finish-actions">
+            <button id="quizFinishRepeatDifficultBtn" class="btn btn-warning" style="display: none;">
+              <span>🔁</span> Повторить слова с ошибками (<span id="quizFinishDifficultNum">0</span>)
+            </button>
+            <button id="quizFinishNextBatchBtn" class="btn btn-primary" style="display: none;">
+              <span>➡️</span> Следующая порция
+            </button>
+            <button id="quizFinishNewRandomBtn" class="btn btn-primary">
+              <span>🎲</span> Новые случайные слова
+            </button>
+            <button id="quizFinishRestartBtn" class="btn btn-secondary">
+              <span>🔄</span> Пройти этот же набор ещё раз
+            </button>
+          </div>
+        </div>
+
+        <!-- Shortcuts Helper for Quiz -->
+        <div class="shortcuts-bar desktop-only" style="margin-top: 0.5rem;">
+          <span><span class="kbd">Enter</span> Проверить / Далее</span>
+          <span><span class="kbd">1–4</span> Варианты</span>
+          <span><span class="kbd">S</span> В конец очереди</span>
+          <span><span class="kbd">P</span> Озвучить</span>
+          <span><span class="kbd">Del</span> Удалить</span>
+        </div>
+
       </div>
     </div>
 
@@ -1052,13 +1878,35 @@
       folder: 'data',
       fileName: 'vocabulary.json',
       allWords: [],
+      sessionWords: [],
       cardQueue: [],
+      history: [],
+      difficultWords: new Set(),
       currentIndex: 0,
       isRevealed: false,
       learnedCount: 0,
       totalCount: 0,
-      quizWord: null,
-      theme: localStorage.getItem('dict_theme') || 'dark'
+      sessionSize: parseInt(localStorage.getItem('dict_session_size') ?? '20', 10),
+      sessionMode: localStorage.getItem('dict_session_mode') || 'random',
+      batchIndex: 0,
+      autoPronounce: localStorage.getItem('dict_auto_speech') === 'true',
+      speechRate: parseFloat(localStorage.getItem('dict_speech_rate') || '0.95') || 0.95,
+      theme: localStorage.getItem('dict_theme') || 'dark',
+
+      // Quiz State
+      quizSize: parseInt(localStorage.getItem('dict_quiz_size') ?? '20', 10),
+      quizMode: localStorage.getItem('dict_quiz_mode') || 'random', // 'random' or 'seq'
+      quizFormat: localStorage.getItem('dict_quiz_format') || 'typing', // 'typing' or 'choice'
+      quizDirection: localStorage.getItem('dict_quiz_dir') || 'word_to_trans', // 'word_to_trans', 'trans_to_word', 'mixed'
+      quizBatchIndex: 0,
+      quizWords: [],
+      quizQueue: [],
+      quizDifficultWords: new Set(),
+      quizLearnedCount: 0,
+      quizFirstTryCount: 0,
+      quizCurrentItem: null,
+      quizCurrentQuestion: null,
+      quizIsAnswered: false
     };
 
     // --- DOM Elements ---
@@ -1077,19 +1925,98 @@
     const currentTranslationText = document.getElementById('currentTranslationText');
     const currentExamplesList = document.getElementById('currentExamplesList');
     const cardProgressText = document.getElementById('cardProgressText');
+    const cardSessionBadge = document.getElementById('cardSessionBadge');
     const cardQueueText = document.getElementById('cardQueueText');
     const cardProgressFill = document.getElementById('cardProgressFill');
+    const cardActionsBar = document.getElementById('cardActionsBar');
+    const backBtn = document.getElementById('backBtn');
     const knowBtn = document.getElementById('knowBtn');
     const skipBtn = document.getElementById('skipBtn');
     const deleteWordBtn = document.getElementById('deleteWordBtn');
+    const swipeStampKnow = document.getElementById('swipeStampKnow');
+    const swipeStampSkip = document.getElementById('swipeStampSkip');
 
-    // Quiz DOM
+    // Cards Session Toolbar DOM
+    const batchSizePills = document.querySelectorAll('#batchSizePills .pill-btn');
+    const cardsCustomSizeInput = document.getElementById('cardsCustomSizeInput');
+    const cardsCustomSizeBtn = document.getElementById('cardsCustomSizeBtn');
+    const sessionModePills = document.querySelectorAll('#sessionModePills .pill-btn');
+    const seqBatchNav = document.getElementById('seqBatchNav');
+    const prevBatchBtn = document.getElementById('prevBatchBtn');
+    const nextBatchBtn = document.getElementById('nextBatchBtn');
+    const batchInfoText = document.getElementById('batchInfoText');
+    const autoSpeechToggle = document.getElementById('autoSpeechToggle');
+    const autoSpeechIcon = document.getElementById('autoSpeechIcon');
+    const autoSpeechStatus = document.getElementById('autoSpeechStatus');
+    const speechRateSelect = document.getElementById('speechRateSelect');
+
+    // Cards Session Finished Card DOM
+    const sessionFinishedCard = document.getElementById('sessionFinishedCard');
+    const finishTotalWords = document.getElementById('finishTotalWords');
+    const finishKnownFirstTry = document.getElementById('finishKnownFirstTry');
+    const finishDifficultCount = document.getElementById('finishDifficultCount');
+    const finishDifficultNum = document.getElementById('finishDifficultNum');
+    const finishRepeatDifficultBtn = document.getElementById('finishRepeatDifficultBtn');
+    const finishNextBatchBtn = document.getElementById('finishNextBatchBtn');
+    const finishNewRandomBtn = document.getElementById('finishNewRandomBtn');
+    const finishRestartBtn = document.getElementById('finishRestartBtn');
+    const finishUndoBtn = document.getElementById('finishUndoBtn');
+
+    // Quiz Session Toolbar DOM
+    const quizSizePills = document.querySelectorAll('#quizSizePills .pill-btn');
+    const quizCustomSizeInput = document.getElementById('quizCustomSizeInput');
+    const quizCustomSizeBtn = document.getElementById('quizCustomSizeBtn');
+    const quizModePills = document.querySelectorAll('#quizModePills .pill-btn');
+    const quizFormatPills = document.querySelectorAll('#quizFormatPills .pill-btn');
+    const quizDirectionPills = document.querySelectorAll('#quizDirectionPills .pill-btn');
+
+    // Quiz Sequential Nav DOM
+    const quizSeqBatchNav = document.getElementById('quizSeqBatchNav');
+    const quizPrevBatchBtn = document.getElementById('quizPrevBatchBtn');
+    const quizNextBatchBtn = document.getElementById('quizNextBatchBtn');
+    const quizBatchInfoText = document.getElementById('quizBatchInfoText');
+
+    // Quiz Progress DOM
+    const quizProgressText = document.getElementById('quizProgressText');
+    const quizSessionBadge = document.getElementById('quizSessionBadge');
+    const quizStatsBadge = document.getElementById('quizStatsBadge');
+    const quizScoreCorrect = document.getElementById('quizScoreCorrect');
+    const quizScoreWrong = document.getElementById('quizScoreWrong');
+    const quizQueueText = document.getElementById('quizQueueText');
+    const quizProgressFill = document.getElementById('quizProgressFill');
+
+    // Quiz Active Card DOM
+    const quizActiveCard = document.getElementById('quizActiveCard');
+    const quizCardBadge = document.getElementById('quizCardBadge');
+    const quizPromptLabel = document.getElementById('quizPromptLabel');
     const quizPromptWord = document.getElementById('quizPromptWord');
+    const quizSpeakerBtn = document.getElementById('quizSpeakerBtn');
+    const quizContextHintBtn = document.getElementById('quizContextHintBtn');
+    const quizContextHintBox = document.getElementById('quizContextHintBox');
+
+    const quizTypingContainer = document.getElementById('quizTypingContainer');
     const quizInput = document.getElementById('quizInput');
     const quizCheckBtn = document.getElementById('quizCheckBtn');
+    const quizChoiceContainer = document.getElementById('quizChoiceContainer');
     const quizFeedback = document.getElementById('quizFeedback');
+    const quizNextBtnRow = document.getElementById('quizNextBtnRow');
+    const quizNextBtn = document.getElementById('quizNextBtn');
+
+    const quizGiveUpBtn = document.getElementById('quizGiveUpBtn');
     const quizSkipBtn = document.getElementById('quizSkipBtn');
     const quizDeleteBtn = document.getElementById('quizDeleteBtn');
+
+    // Quiz Finished Card DOM
+    const quizFinishedCard = document.getElementById('quizFinishedCard');
+    const quizFinishTotalWords = document.getElementById('quizFinishTotalWords');
+    const quizFinishFirstTry = document.getElementById('quizFinishFirstTry');
+    const quizFinishMistakes = document.getElementById('quizFinishMistakes');
+    const quizFinishAccuracy = document.getElementById('quizFinishAccuracy');
+    const quizFinishRepeatDifficultBtn = document.getElementById('quizFinishRepeatDifficultBtn');
+    const quizFinishDifficultNum = document.getElementById('quizFinishDifficultNum');
+    const quizFinishNextBatchBtn = document.getElementById('quizFinishNextBatchBtn');
+    const quizFinishNewRandomBtn = document.getElementById('quizFinishNewRandomBtn');
+    const quizFinishRestartBtn = document.getElementById('quizFinishRestartBtn');
 
     // Dictionary DOM
     const dictionarySearchInput = document.getElementById('dictionarySearchInput');
@@ -1123,13 +2050,43 @@
     // --- Audio Speech Synthesis ---
     function speakText(text) {
       if (!('speechSynthesis' in window)) return;
-      window.speechSynthesis.cancel();
-      const clean = text.replace(/^\([^)]*\)\s*/, ''); // remove tags like (literary)
-      const utterance = new SpeechSynthesisUtterance(clean);
-      utterance.lang = state.folder === 'data_for_fr' ? 'fr-FR' : 'en-US';
-      utterance.rate = 0.95;
-      window.speechSynthesis.speak(utterance);
+      try {
+        window.speechSynthesis.cancel();
+        const clean = text
+          .replace(/^\([^)]*\)\s*/g, '')
+          .replace(/\[[^\]]*\]/g, '')
+          .trim();
+        if (!clean) return;
+
+        const utterance = new SpeechSynthesisUtterance(clean);
+        utterance.lang = state.folder === 'data_for_fr' ? 'fr-FR' : 'en-US';
+        utterance.rate = state.speechRate || 0.95;
+
+        cardSpeakerBtn.classList.add('speaking');
+        utterance.onend = () => cardSpeakerBtn.classList.remove('speaking');
+        utterance.onerror = () => cardSpeakerBtn.classList.remove('speaking');
+
+        window.speechSynthesis.speak(utterance);
+      } catch (err) {
+        console.warn('Speech error:', err);
+      }
     }
+
+    // iOS Safari WebKit audio unlock on first user gesture
+    let audioUnlocked = false;
+    function unlockAudio() {
+      if (audioUnlocked || !('speechSynthesis' in window)) return;
+      try {
+        const dummy = new SpeechSynthesisUtterance('');
+        dummy.volume = 0;
+        window.speechSynthesis.speak(dummy);
+        audioUnlocked = true;
+      } catch (_) {}
+      window.removeEventListener('touchstart', unlockAudio);
+      window.removeEventListener('click', unlockAudio);
+    }
+    window.addEventListener('touchstart', unlockAudio, { passive: true });
+    window.addEventListener('click', unlockAudio, { passive: true });
 
     // --- Toast Notifications ---
     function showToast(message, type = 'info') {
@@ -1167,7 +2124,12 @@
         document.getElementById(tabId).classList.add('active');
 
         if (btn.dataset.tab === 'quiz') {
-          initQuizWord();
+          if (state.quizQueue.length === 0 && state.allWords.length > 0) {
+            startNewQuizSession();
+          } else {
+            syncQuizControlsUI();
+            renderCurrentQuizQuestion();
+          }
         } else if (btn.dataset.tab === 'dictionary') {
           renderDictionaryTable();
         }
@@ -1180,17 +2142,24 @@
         const res = await fetch(`/api/files?folder=${state.folder}`);
         const data = await res.json();
         fileSelect.innerHTML = '';
-        data.files.forEach(f => {
+        if (data.files && data.files.length > 1) {
+          const allOpt = document.createElement('option');
+          allOpt.value = '__all__';
+          allOpt.textContent = `🌟 Все файлы папки (${data.total_words || ''} слов)`;
+          if (state.fileName === '__all__') allOpt.selected = true;
+          fileSelect.appendChild(allOpt);
+        }
+        (data.files || []).forEach(f => {
           const opt = document.createElement('option');
           opt.value = f.filename;
           opt.textContent = `${f.filename} (${f.word_count} words)`;
-          if (f.filename === state.fileName || f.is_json) {
+          if (f.filename === state.fileName || (!state.fileName && f.is_json)) {
             opt.selected = true;
             state.fileName = f.filename;
           }
           fileSelect.appendChild(opt);
         });
-        if (!state.fileName && data.files.length > 0) {
+        if (!state.fileName && data.files && data.files.length > 0) {
           state.fileName = data.files[0].filename;
         }
         await loadWords();
@@ -1207,14 +2176,14 @@
         if (data.error) throw new Error(data.error);
 
         state.allWords = data.words || [];
-        state.cardQueue = [...state.allWords];
         state.totalCount = state.allWords.length;
-        state.learnedCount = 0;
         wordsCountBadge.textContent = state.totalCount;
 
-        updateCardDisplay();
+        state.batchIndex = 0;
+        state.quizBatchIndex = 0;
+        startNewSession();
+        startNewQuizSession();
         renderDictionaryTable();
-        initQuizWord();
       } catch (err) {
         showToast('Error loading words: ' + err.message, 'danger');
       }
@@ -1224,7 +2193,7 @@
     function openDeleteModal(word) {
       pendingDeleteWord = word;
       deleteModalWordName.textContent = `"${word}"`;
-      deleteModalFileName.textContent = state.fileName;
+      deleteModalFileName.textContent = state.fileName === '__all__' ? 'JSON файлов' : state.fileName;
       deleteModal.classList.add('open');
     }
 
@@ -1251,20 +2220,37 @@
         const result = await res.json();
 
         if (result.success) {
-          showToast(`Deleted "${wordToDelete}" directly from ${state.fileName}!`, 'success');
+          showToast(`Удалено "${wordToDelete}" из ${result.file || state.fileName}!`, 'success');
 
           // Update local state
           state.allWords = state.allWords.filter(w => w.word.toLowerCase() !== wordToDelete.toLowerCase());
+          state.sessionWords = state.sessionWords.filter(w => w.word.toLowerCase() !== wordToDelete.toLowerCase());
           state.cardQueue = state.cardQueue.filter(w => w.word.toLowerCase() !== wordToDelete.toLowerCase());
+          state.history = state.history.filter(h => h.item.word.toLowerCase() !== wordToDelete.toLowerCase());
+          for (const dw of state.difficultWords) {
+            if (dw.word.toLowerCase() === wordToDelete.toLowerCase()) {
+              state.difficultWords.delete(dw);
+            }
+          }
+
+          // Quiz state updates
+          state.quizWords = state.quizWords.filter(w => w.word.toLowerCase() !== wordToDelete.toLowerCase());
+          state.quizQueue = state.quizQueue.filter(w => w.word.toLowerCase() !== wordToDelete.toLowerCase());
+          for (const dw of state.quizDifficultWords) {
+            if (dw.word.toLowerCase() === wordToDelete.toLowerCase()) {
+              state.quizDifficultWords.delete(dw);
+            }
+          }
+
           state.totalCount = state.allWords.length;
           wordsCountBadge.textContent = state.totalCount;
 
           // Refresh UI
-          updateCardDisplay();
+          syncSessionControlsUI();
+          updateCardDisplay(false);
+          syncQuizControlsUI();
+          renderCurrentQuizQuestion();
           renderDictionaryTable();
-          if (state.quizWord && state.quizWord.word.toLowerCase() === wordToDelete.toLowerCase()) {
-            initQuizWord();
-          }
         } else {
           showToast('Failed to delete word: ' + (result.error || 'Unknown error'), 'danger');
         }
@@ -1274,25 +2260,183 @@
       pendingDeleteWord = null;
     });
 
+    // --- Session & Batch Management (Cards) ---
+    function syncSessionControlsUI() {
+      // Sync batch size pills
+      batchSizePills.forEach(btn => {
+        const sz = parseInt(btn.dataset.size, 10);
+        btn.classList.toggle('active', sz === state.sessionSize);
+      });
+
+      if (cardsCustomSizeInput) {
+        cardsCustomSizeInput.value = state.sessionSize > 0 ? state.sessionSize : (state.allWords.length || 20);
+        cardsCustomSizeInput.max = (state.allWords.length || 100).toString();
+      }
+
+      // Sync mode pills
+      sessionModePills.forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.mode === state.sessionMode);
+      });
+
+      // Sync sequential batch nav bar
+      if (state.sessionMode === 'seq' && state.sessionSize > 0 && state.allWords.length > 0) {
+        seqBatchNav.style.display = 'flex';
+        const totalBatches = Math.max(1, Math.ceil(state.allWords.length / state.sessionSize));
+        const currentBatch = Math.min(state.batchIndex, totalBatches - 1);
+        const start = currentBatch * state.sessionSize + 1;
+        const end = Math.min((currentBatch + 1) * state.sessionSize, state.allWords.length);
+        batchInfoText.textContent = `Порция ${currentBatch + 1} / ${totalBatches} (слова ${start}–${end} из ${state.allWords.length})`;
+        prevBatchBtn.disabled = currentBatch <= 0;
+        nextBatchBtn.disabled = currentBatch >= totalBatches - 1;
+      } else {
+        seqBatchNav.style.display = 'none';
+      }
+
+      // Sync auto-speech
+      autoSpeechToggle.classList.toggle('active', state.autoPronounce);
+      autoSpeechIcon.textContent = state.autoPronounce ? '🔊' : '🔇';
+      autoSpeechStatus.textContent = state.autoPronounce ? 'Вкл' : 'Выкл';
+      speechRateSelect.value = state.speechRate.toString();
+    }
+
+    function startNewSession(newBatchIndex = null) {
+      if (state.allWords.length === 0) {
+        state.sessionWords = [];
+        state.cardQueue = [];
+        state.history = [];
+        state.difficultWords.clear();
+        state.learnedCount = 0;
+        updateCardDisplay();
+        return;
+      }
+
+      if (newBatchIndex !== null) {
+        state.batchIndex = newBatchIndex;
+      }
+
+      const total = state.allWords.length;
+
+      if (state.sessionMode === 'seq' && state.sessionSize > 0) {
+        const totalBatches = Math.max(1, Math.ceil(total / state.sessionSize));
+        if (state.batchIndex < 0) state.batchIndex = 0;
+        if (state.batchIndex >= totalBatches) state.batchIndex = totalBatches - 1;
+
+        const start = state.batchIndex * state.sessionSize;
+        const end = Math.min(start + state.sessionSize, total);
+        state.sessionWords = state.allWords.slice(start, end);
+      } else {
+        // Random mode or All words
+        const count = (state.sessionSize <= 0 || state.sessionSize >= total) ? total : state.sessionSize;
+        const shuffled = [...state.allWords];
+        for (let i = shuffled.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        state.sessionWords = shuffled.slice(0, count);
+      }
+
+      state.cardQueue = [...state.sessionWords];
+      state.history = [];
+      state.difficultWords.clear();
+      state.learnedCount = 0;
+
+      syncSessionControlsUI();
+      updateCardDisplay(true);
+    }
+
+    function startDifficultSession() {
+      if (state.difficultWords.size === 0) return;
+      state.sessionWords = Array.from(state.difficultWords);
+      state.cardQueue = [...state.sessionWords];
+      state.history = [];
+      state.difficultWords.clear();
+      state.learnedCount = 0;
+      updateCardDisplay(true);
+      showToast(`Начато повторение сложных слов (${state.sessionWords.length})`, 'info');
+    }
+
+    function undoCard() {
+      if (state.history.length === 0) {
+        showToast('Нет предыдущих карточек для возврата', 'info');
+        return;
+      }
+
+      const last = state.history.pop();
+      if (last.action === 'know') {
+        state.learnedCount = Math.max(0, state.learnedCount - 1);
+        state.cardQueue.unshift(last.item);
+      } else if (last.action === 'skip') {
+        const idx = state.cardQueue.lastIndexOf(last.item);
+        if (idx !== -1) {
+          state.cardQueue.splice(idx, 1);
+        }
+        state.cardQueue.unshift(last.item);
+        const stillSkipped = state.history.some(h => h.item === last.item && h.action === 'skip');
+        if (!stillSkipped) {
+          state.difficultWords.delete(last.item);
+        }
+      }
+
+      updateCardDisplay(false);
+      showToast(`Вернулись назад к слову: "${last.item.word}"`, 'info');
+    }
+
     // --- Cards / Flashcard Logic ---
-    function updateCardDisplay() {
+    function updateCardDisplay(triggerAutoSpeak = false) {
+      backBtn.disabled = state.history.length === 0;
+
+      // Completion Summary Screen when queue is empty
       if (state.cardQueue.length === 0) {
-        currentWordText.textContent = state.totalCount > 0 ? "🎉 All words reviewed!" : "No words in file";
-        cardSpeakerBtn.style.display = 'none';
-        cardBadge.textContent = "Done";
-        cardRevealHint.style.display = 'none';
-        cardRevealedContent.style.display = 'none';
-        cardProgressText.textContent = `Done ${state.learnedCount} of ${state.totalCount}`;
-        cardQueueText.textContent = "Queue empty";
+        flashCard.style.display = 'none';
+        cardActionsBar.style.display = 'none';
+        sessionFinishedCard.style.display = 'flex';
+
+        const totalInSession = state.sessionWords.length;
+        const diffCount = state.difficultWords.size;
+        const cleanKnown = Math.max(0, totalInSession - diffCount);
+
+        finishTotalWords.textContent = totalInSession;
+        finishKnownFirstTry.textContent = cleanKnown;
+        finishDifficultCount.textContent = diffCount;
+        finishDifficultNum.textContent = diffCount;
+
+        if (diffCount > 0) {
+          finishRepeatDifficultBtn.style.display = 'flex';
+        } else {
+          finishRepeatDifficultBtn.style.display = 'none';
+        }
+
+        const totalBatches = state.sessionSize > 0 ? Math.ceil(state.allWords.length / state.sessionSize) : 1;
+        if (state.sessionMode === 'seq' && state.batchIndex < totalBatches - 1) {
+          finishNextBatchBtn.style.display = 'flex';
+          finishNextBatchBtn.innerHTML = `<span>➡️</span> Следующая порция (${state.batchIndex + 2} из ${totalBatches})`;
+        } else {
+          finishNextBatchBtn.style.display = 'none';
+        }
+
+        cardProgressText.textContent = `Пройдено ${state.sessionWords.length} из ${state.sessionWords.length}`;
+        cardQueueText.textContent = "Серия завершена";
         cardProgressFill.style.width = '100%';
         return;
       }
 
+      // Normal Card View
+      flashCard.style.display = 'flex';
+      cardActionsBar.style.display = 'grid';
+      sessionFinishedCard.style.display = 'none';
+
       const item = state.cardQueue[0];
       currentWordText.textContent = item.word;
       cardSpeakerBtn.style.display = 'inline-flex';
-      cardBadge.textContent = `#${state.totalCount - state.cardQueue.length + 1}`;
-      currentTranslationText.textContent = item.translation || "(No translation)";
+
+      const sessionTotal = state.sessionWords.length;
+      const currentNumber = Math.min(sessionTotal, state.learnedCount + 1);
+      cardBadge.textContent = `#${currentNumber} / ${sessionTotal}`;
+      cardSessionBadge.textContent = state.sessionMode === 'seq' 
+        ? `Порция #${state.batchIndex + 1}` 
+        : `Сессия: ${sessionTotal} слов`;
+
+      currentTranslationText.textContent = item.translation || "(Нет перевода)";
 
       // Build examples
       currentExamplesList.innerHTML = '';
@@ -1317,17 +2461,21 @@
           currentExamplesList.appendChild(div);
         });
       } else {
-        currentExamplesList.innerHTML = '<div style="color: var(--text-muted); font-size: 0.85rem; font-style: italic;">No example sentences provided.</div>';
+        currentExamplesList.innerHTML = '<div style="color: var(--text-muted); font-size: 0.85rem; font-style: italic;">Примеры предложений не указаны.</div>';
       }
 
       state.isRevealed = false;
       cardRevealHint.style.display = 'flex';
       cardRevealedContent.style.display = 'none';
 
-      const progressPct = Math.round((state.learnedCount / Math.max(state.totalCount, 1)) * 100);
+      const progressPct = sessionTotal > 0 ? Math.round((state.learnedCount / sessionTotal) * 100) : 0;
       cardProgressFill.style.width = `${progressPct}%`;
-      cardProgressText.textContent = `Progress: ${state.learnedCount} / ${state.totalCount} words`;
-      cardQueueText.textContent = `Queue: ${state.cardQueue.length} words`;
+      cardProgressText.textContent = `Слово ${currentNumber} из ${sessionTotal}`;
+      cardQueueText.textContent = `В очереди: ${state.cardQueue.length}`;
+
+      if (triggerAutoSpeak && state.autoPronounce) {
+        speakText(item.word);
+      }
     }
 
     function toggleCardReveal() {
@@ -1356,61 +2504,791 @@
 
     knowBtn.addEventListener('click', () => {
       if (state.cardQueue.length === 0) return;
-      state.cardQueue.shift();
+      const current = state.cardQueue.shift();
+      state.history.push({ item: current, action: 'know' });
       state.learnedCount++;
-      updateCardDisplay();
+      updateCardDisplay(true);
     });
 
     skipBtn.addEventListener('click', () => {
-      if (state.cardQueue.length <= 1) return;
-      const moved = state.cardQueue.shift();
-      state.cardQueue.push(moved);
-      updateCardDisplay();
+      if (state.cardQueue.length === 0) return;
+      const current = state.cardQueue.shift();
+      state.history.push({ item: current, action: 'skip' });
+      state.difficultWords.add(current);
+      state.cardQueue.push(current);
+      updateCardDisplay(true);
     });
+
+    backBtn.addEventListener('click', undoCard);
+    finishUndoBtn.addEventListener('click', undoCard);
 
     deleteWordBtn.addEventListener('click', () => {
       if (state.cardQueue.length === 0) return;
       openDeleteModal(state.cardQueue[0].word);
     });
 
-    // --- Quiz Logic ---
-    function initQuizWord() {
+    // Session Toolbar Events
+    batchSizePills.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const sz = parseInt(btn.dataset.size, 10);
+        state.sessionSize = sz;
+        localStorage.setItem('dict_session_size', sz.toString());
+        state.batchIndex = 0;
+        startNewSession();
+        showToast(`Выбрана порция: ${sz === 0 ? 'Все слова' : sz + ' слов'}`, 'info');
+      });
+    });
+
+    sessionModePills.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const mode = btn.dataset.mode;
+        state.sessionMode = mode;
+        localStorage.setItem('dict_session_mode', mode);
+        state.batchIndex = 0;
+        startNewSession();
+        showToast(`Режим: ${mode === 'seq' ? 'По порядку' : 'Случайно'}`, 'info');
+      });
+    });
+
+    prevBatchBtn.addEventListener('click', () => {
+      if (state.batchIndex > 0) {
+        startNewSession(state.batchIndex - 1);
+      }
+    });
+
+    nextBatchBtn.addEventListener('click', () => {
+      const totalBatches = state.sessionSize > 0 ? Math.ceil(state.allWords.length / state.sessionSize) : 1;
+      if (state.batchIndex < totalBatches - 1) {
+        startNewSession(state.batchIndex + 1);
+      }
+    });
+
+    autoSpeechToggle.addEventListener('click', () => {
+      state.autoPronounce = !state.autoPronounce;
+      localStorage.setItem('dict_auto_speech', state.autoPronounce ? 'true' : 'false');
+      syncSessionControlsUI();
+      if (state.autoPronounce && state.cardQueue.length > 0) {
+        speakText(state.cardQueue[0].word);
+      }
+      showToast(state.autoPronounce ? '🔊 Авто-озвучка включена' : '🔇 Авто-озвучка выключена', 'info');
+    });
+
+    speechRateSelect.addEventListener('change', (e) => {
+      state.speechRate = parseFloat(e.target.value) || 0.95;
+      localStorage.setItem('dict_speech_rate', state.speechRate.toString());
+    });
+
+    finishRepeatDifficultBtn.addEventListener('click', startDifficultSession);
+    finishNextBatchBtn.addEventListener('click', () => {
+      startNewSession(state.batchIndex + 1);
+    });
+    finishNewRandomBtn.addEventListener('click', () => {
+      startNewSession();
+    });
+    finishRestartBtn.addEventListener('click', () => {
+      startNewSession(state.batchIndex);
+    });
+
+    // --- Mobile Touch / Swipe Handling (iPhone / Smartphones) ---
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchStartTime = 0;
+    let isSwiping = false;
+
+    flashCard.addEventListener('touchstart', (e) => {
+      if (e.target.closest('#cardSpeakerBtn') || e.target.closest('.example-speaker')) return;
+      const t = e.touches[0];
+      touchStartX = t.clientX;
+      touchStartY = t.clientY;
+      touchStartTime = Date.now();
+      isSwiping = true;
+      flashCard.style.transition = 'none';
+    }, { passive: true });
+
+    flashCard.addEventListener('touchmove', (e) => {
+      if (!isSwiping || state.cardQueue.length === 0) return;
+      const t = e.touches[0];
+      const dx = t.clientX - touchStartX;
+      const dy = t.clientY - touchStartY;
+
+      if (Math.abs(dx) > Math.abs(dy)) {
+        if (e.cancelable) e.preventDefault();
+        const rot = dx * 0.07;
+        flashCard.style.transform = `translateX(${dx}px) rotate(${rot}deg)`;
+
+        if (dx > 35) {
+          swipeStampKnow.style.opacity = Math.min(1, (dx - 35) / 50);
+          swipeStampSkip.style.opacity = 0;
+        } else if (dx < -35) {
+          swipeStampSkip.style.opacity = Math.min(1, (-dx - 35) / 50);
+          swipeStampKnow.style.opacity = 0;
+        } else {
+          swipeStampKnow.style.opacity = 0;
+          swipeStampSkip.style.opacity = 0;
+        }
+      }
+    }, { passive: false });
+
+    flashCard.addEventListener('touchend', (e) => {
+      if (!isSwiping || state.cardQueue.length === 0) return;
+      isSwiping = false;
+      const t = e.changedTouches[0];
+      const dx = t.clientX - touchStartX;
+      const dy = t.clientY - touchStartY;
+      const dt = Date.now() - touchStartTime;
+
+      swipeStampKnow.style.opacity = 0;
+      swipeStampSkip.style.opacity = 0;
+
+      if (dx > 85) {
+        // Swipe Right -> Know
+        flashCard.style.transition = 'transform 0.18s ease, opacity 0.18s ease';
+        flashCard.style.transform = 'translateX(120%) rotate(18deg)';
+        flashCard.style.opacity = '0';
+        if (navigator.vibrate) navigator.vibrate(15);
+        setTimeout(() => {
+          flashCard.style.transform = '';
+          flashCard.style.opacity = '1';
+          flashCard.style.transition = '';
+          knowBtn.click();
+        }, 170);
+      } else if (dx < -85) {
+        // Swipe Left -> Skip / Repeat
+        flashCard.style.transition = 'transform 0.18s ease, opacity 0.18s ease';
+        flashCard.style.transform = 'translateX(-120%) rotate(-18deg)';
+        flashCard.style.opacity = '0';
+        if (navigator.vibrate) navigator.vibrate(15);
+        setTimeout(() => {
+          flashCard.style.transform = '';
+          flashCard.style.opacity = '1';
+          flashCard.style.transition = '';
+          skipBtn.click();
+        }, 170);
+      } else if (Math.abs(dx) < 12 && Math.abs(dy) < 12 && dt < 350) {
+        // Quick tap -> Flip
+        toggleCardReveal();
+      } else {
+        // Snap back smoothly
+        flashCard.style.transition = 'transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+        flashCard.style.transform = '';
+      }
+    });
+
+    // --- Cards Custom Size Handler ---
+    if (cardsCustomSizeBtn && cardsCustomSizeInput) {
+      cardsCustomSizeBtn.addEventListener('click', () => {
+        const val = parseInt(cardsCustomSizeInput.value, 10);
+        if (isNaN(val) || val <= 0) return;
+        const total = state.allWords.length;
+        const clamped = total > 0 ? Math.min(val, total) : val;
+        state.sessionSize = clamped;
+        localStorage.setItem('dict_session_size', clamped.toString());
+        state.batchIndex = 0;
+        syncSessionControlsUI();
+        startNewSession();
+        showToast(`Выбрана порция карточек: ${clamped} слов`, 'info');
+      });
+
+      cardsCustomSizeInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') cardsCustomSizeBtn.click();
+      });
+    }
+
+    // --- Quiz Matching & Normalization Helper ---
+    function normalizeText(text) {
+      if (!text) return '';
+      return text
+        .toLowerCase()
+        .replace(/^\s*(to|a|an)\s+/i, '')
+        .replace(/[()[\]{}.,!?;:"'«»`]/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+    }
+
+    function checkAnswerMatch(userAnswer, targetText, isTargetEnglish = false) {
+      if (!userAnswer || !targetText) return false;
+      const userClean = normalizeText(userAnswer);
+      if (!userClean) return false;
+
+      // Target alternatives separated by comma, semicolon, slash, or newline
+      const parts = targetText.split(/[,;\/\n]/);
+
+      for (const part of parts) {
+        const partClean = normalizeText(part);
+        if (!partClean) continue;
+
+        if (userClean === partClean) return true;
+
+        const withoutParens = normalizeText(part.replace(/\([^)]*\)/g, ''));
+        if (userClean === withoutParens) return true;
+
+        if (isTargetEnglish) {
+          if (userClean.replace(/-/g, ' ') === partClean.replace(/-/g, ' ')) return true;
+        } else {
+          // If translation is phrase, check if user provided primary keyword (like radomaizer.py)
+          const wordsInValid = withoutParens.split(' ').filter(w => w.length > 2);
+          if (wordsInValid.includes(userClean)) return true;
+        }
+      }
+
+      return false;
+    }
+
+    // --- Quiz Session & State Management ---
+    function syncQuizControlsUI() {
+      // Sync size pills
+      quizSizePills.forEach(btn => {
+        const sz = parseInt(btn.dataset.size, 10);
+        btn.classList.toggle('active', sz === state.quizSize);
+      });
+
+      if (quizCustomSizeInput) {
+        quizCustomSizeInput.value = state.quizSize > 0 ? state.quizSize : (state.allWords.length || 20);
+        quizCustomSizeInput.max = (state.allWords.length || 100).toString();
+      }
+
+      // Sync mode pills
+      quizModePills.forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.mode === state.quizMode);
+      });
+
+      // Sync format pills
+      quizFormatPills.forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.format === state.quizFormat);
+      });
+
+      // Sync direction pills
+      quizDirectionPills.forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.dir === state.quizDirection);
+      });
+
+      // Sync sequential batch nav bar
+      if (state.quizMode === 'seq' && state.quizSize > 0 && state.allWords.length > 0) {
+        quizSeqBatchNav.style.display = 'flex';
+        const totalBatches = Math.max(1, Math.ceil(state.allWords.length / state.quizSize));
+        const currentBatch = Math.min(state.quizBatchIndex, totalBatches - 1);
+        const start = currentBatch * state.quizSize + 1;
+        const end = Math.min((currentBatch + 1) * state.quizSize, state.allWords.length);
+        quizBatchInfoText.textContent = `Порция ${currentBatch + 1} / ${totalBatches} (слова ${start}–${end} из ${state.allWords.length})`;
+        quizPrevBatchBtn.disabled = currentBatch <= 0;
+        quizNextBatchBtn.disabled = currentBatch >= totalBatches - 1;
+      } else {
+        quizSeqBatchNav.style.display = 'none';
+      }
+    }
+
+    function startNewQuizSession(newBatchIndex = null) {
       if (state.allWords.length === 0) {
-        quizPromptWord.textContent = "No words available";
+        state.quizWords = [];
+        state.quizQueue = [];
+        state.quizDifficultWords.clear();
+        state.quizLearnedCount = 0;
+        state.quizFirstTryCount = 0;
+        renderCurrentQuizQuestion();
         return;
       }
-      const randomIdx = Math.floor(Math.random() * state.allWords.length);
-      state.quizWord = state.allWords[randomIdx];
-      quizPromptWord.textContent = state.quizWord.translation || "(No translation)";
-      quizInput.value = '';
-      quizFeedback.className = 'quiz-feedback';
-      quizFeedback.style.display = 'none';
-      quizInput.focus();
+
+      if (newBatchIndex !== null) {
+        state.quizBatchIndex = newBatchIndex;
+      }
+
+      const total = state.allWords.length;
+      const targetSize = (state.quizSize <= 0 || state.quizSize > total) ? total : state.quizSize;
+
+      if (state.quizMode === 'seq' && state.quizSize > 0) {
+        const totalBatches = Math.max(1, Math.ceil(total / state.quizSize));
+        if (state.quizBatchIndex < 0) state.quizBatchIndex = 0;
+        if (state.quizBatchIndex >= totalBatches) state.quizBatchIndex = totalBatches - 1;
+
+        const start = state.quizBatchIndex * state.quizSize;
+        const end = Math.min(start + state.quizSize, total);
+        state.quizWords = state.allWords.slice(start, end);
+      } else {
+        // Random mode
+        const shuffled = [...state.allWords];
+        for (let i = shuffled.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        state.quizWords = shuffled.slice(0, targetSize);
+      }
+
+      state.quizQueue = [...state.quizWords];
+      state.quizDifficultWords.clear();
+      state.quizLearnedCount = 0;
+      state.quizFirstTryCount = 0;
+      state.quizIsAnswered = false;
+
+      syncQuizControlsUI();
+      renderCurrentQuizQuestion();
     }
+
+    function startQuizDifficultSession() {
+      if (state.quizDifficultWords.size === 0) return;
+      state.quizWords = Array.from(state.quizDifficultWords);
+      state.quizQueue = [...state.quizWords];
+      state.quizDifficultWords.clear();
+      state.quizLearnedCount = 0;
+      state.quizFirstTryCount = 0;
+      state.quizIsAnswered = false;
+      syncQuizControlsUI();
+      renderCurrentQuizQuestion();
+      showToast(`Повторение сложных слов: ${state.quizWords.length}`, 'info');
+    }
+
+    function renderCurrentQuizQuestion() {
+      state.quizIsAnswered = false;
+      quizFeedback.style.display = 'none';
+      quizFeedback.className = 'quiz-feedback';
+      quizNextBtnRow.style.display = 'none';
+      quizContextHintBox.style.display = 'none';
+      quizContextHintBtn.textContent = '💡 Показать пример контекста';
+
+      // Completion screen
+      if (state.quizQueue.length === 0) {
+        quizActiveCard.style.display = 'none';
+        quizFinishedCard.style.display = 'flex';
+
+        const totalInQuiz = state.quizWords.length;
+        const diffCount = state.quizDifficultWords.size;
+        const cleanFirstTry = Math.max(0, totalInQuiz - diffCount);
+        const accuracy = totalInQuiz > 0 ? Math.round((cleanFirstTry / totalInQuiz) * 100) : 100;
+
+        quizFinishTotalWords.textContent = totalInQuiz;
+        quizFinishFirstTry.textContent = cleanFirstTry;
+        quizFinishMistakes.textContent = diffCount;
+        quizFinishAccuracy.textContent = `${accuracy}%`;
+
+        if (diffCount > 0) {
+          quizFinishRepeatDifficultBtn.style.display = 'flex';
+          quizFinishDifficultNum.textContent = diffCount;
+        } else {
+          quizFinishRepeatDifficultBtn.style.display = 'none';
+        }
+
+        const totalBatches = state.quizSize > 0 ? Math.ceil(state.allWords.length / state.quizSize) : 1;
+        if (state.quizMode === 'seq' && state.quizBatchIndex < totalBatches - 1) {
+          quizFinishNextBatchBtn.style.display = 'flex';
+          quizFinishNextBatchBtn.innerHTML = `<span>➡️</span> Следующая порция (${state.quizBatchIndex + 2} из ${totalBatches})`;
+        } else {
+          quizFinishNextBatchBtn.style.display = 'none';
+        }
+
+        quizProgressText.textContent = `Пройдено ${totalInQuiz} из ${totalInQuiz}`;
+        quizQueueText.textContent = "Квиз завершён";
+        quizProgressFill.style.width = '100%';
+        return;
+      }
+
+      // Normal active card
+      quizActiveCard.style.display = 'flex';
+      quizFinishedCard.style.display = 'none';
+
+      const item = state.quizQueue[0];
+      state.quizCurrentItem = item;
+
+      let dir = state.quizDirection;
+      if (dir === 'mixed') {
+        dir = Math.random() < 0.5 ? 'word_to_trans' : 'trans_to_word';
+      }
+
+      let promptText = '';
+      let targetText = '';
+      let promptLabelText = '';
+      let isTargetEnglish = false;
+
+      if (dir === 'word_to_trans') {
+        promptText = item.word;
+        targetText = item.translation || '';
+        promptLabelText = 'Переведите на русский / армянский:';
+        isTargetEnglish = false;
+      } else {
+        promptText = item.translation || '(Нет перевода)';
+        targetText = item.word;
+        promptLabelText = 'Напишите слово на английском:';
+        isTargetEnglish = true;
+      }
+
+      state.quizCurrentQuestion = {
+        item,
+        dir,
+        promptText,
+        targetText,
+        isTargetEnglish
+      };
+
+      const totalInQuiz = state.quizWords.length;
+      const currentNum = Math.min(totalInQuiz, state.quizLearnedCount + 1);
+      quizCardBadge.textContent = `#${currentNum} / ${totalInQuiz}`;
+      quizPromptLabel.textContent = promptLabelText;
+      quizPromptWord.textContent = promptText;
+
+      // Setup context hint
+      if (item.examples && item.examples.length > 0) {
+        quizContextHintBtn.style.display = 'inline-flex';
+        const ex = item.examples[0];
+        const sentenceEn = ex.sentence_en || '';
+        const transAm = ex.translation_am || '';
+        let maskedSentence = sentenceEn;
+        if (item.word) {
+          const reg = new RegExp('\\b' + item.word.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&') + '\\b', 'gi');
+          maskedSentence = sentenceEn.replace(reg, '_______');
+        }
+        quizContextHintBox.innerHTML = `
+          <div style="font-weight: 600; color: var(--accent); margin-bottom: 0.25rem;">Контекстный пример:</div>
+          <div style="font-style: italic;">"${maskedSentence}"</div>
+          ${transAm ? `<div style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem;">${transAm}</div>` : ''}
+        `;
+      } else {
+        quizContextHintBtn.style.display = 'none';
+      }
+
+      // Progress bar & live stats
+      const pct = totalInQuiz > 0 ? Math.round((state.quizLearnedCount / totalInQuiz) * 100) : 0;
+      quizProgressFill.style.width = `${pct}%`;
+      quizProgressText.textContent = `Слово ${currentNum} из ${totalInQuiz}`;
+      quizSessionBadge.textContent = state.quizMode === 'seq'
+        ? `Порция #${state.quizBatchIndex + 1}`
+        : `Квиз: ${totalInQuiz} слов`;
+      quizQueueText.textContent = `Очередь: ${state.quizQueue.length}`;
+      quizScoreCorrect.textContent = state.quizFirstTryCount;
+      quizScoreWrong.textContent = state.quizDifficultWords.size;
+
+      // Render Format: choice or typing
+      if (state.quizFormat === 'choice') {
+        quizTypingContainer.style.display = 'none';
+        quizChoiceContainer.style.display = 'grid';
+        renderQuizOptions(item, targetText, isTargetEnglish);
+      } else {
+        quizTypingContainer.style.display = 'block';
+        quizChoiceContainer.style.display = 'none';
+        quizInput.value = '';
+        quizInput.placeholder = isTargetEnglish ? 'Введите английское слово...' : 'Введите перевод...';
+        quizCheckBtn.disabled = false;
+        setTimeout(() => quizInput.focus(), 60);
+      }
+    }
+
+    function renderQuizOptions(currentItem, correctText, isTargetEnglish) {
+      quizChoiceContainer.innerHTML = '';
+
+      let correctDisplay = correctText;
+      if (!isTargetEnglish && correctText.includes(',')) {
+        correctDisplay = correctText.split(',')[0].trim();
+      }
+
+      const options = [{ text: correctDisplay, isCorrect: true, fullItem: currentItem }];
+
+      const otherWords = state.allWords.filter(w => w.word.toLowerCase() !== currentItem.word.toLowerCase());
+      const shuffledOthers = [...otherWords];
+      for (let i = shuffledOthers.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffledOthers[i], shuffledOthers[j]] = [shuffledOthers[j], shuffledOthers[i]];
+      }
+
+      const distractorsCount = Math.min(3, shuffledOthers.length);
+      const usedTexts = new Set([correctDisplay.toLowerCase()]);
+
+      for (let i = 0; i < shuffledOthers.length && options.length < distractorsCount + 1; i++) {
+        const candidate = shuffledOthers[i];
+        let candText = isTargetEnglish ? candidate.word : (candidate.translation || candidate.word);
+        if (!isTargetEnglish && candText.includes(',')) {
+          candText = candText.split(',')[0].trim();
+        }
+        const cleanCand = candText.trim().toLowerCase();
+        if (candText && !usedTexts.has(cleanCand)) {
+          usedTexts.add(cleanCand);
+          options.push({ text: candText.trim(), isCorrect: false, fullItem: candidate });
+        }
+      }
+
+      for (let i = options.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [options[i], options[j]] = [options[j], options[i]];
+      }
+
+      options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'quiz-option-btn';
+        btn.innerHTML = `<span class="quiz-option-key">${idx + 1}</span> <span>${opt.text}</span>`;
+        btn.addEventListener('click', () => {
+          if (state.quizIsAnswered) return;
+          handleQuizChoiceAnswer(opt, btn);
+        });
+        quizChoiceContainer.appendChild(btn);
+      });
+    }
+
+    function checkQuizAnswer() {
+      if (state.quizIsAnswered) {
+        advanceQuizQuestion();
+        return;
+      }
+      if (!state.quizCurrentQuestion) return;
+
+      const inputVal = quizInput.value.trim();
+      if (!inputVal) {
+        showToast('Введите вариант ответа', 'info');
+        quizInput.focus();
+        return;
+      }
+
+      const { item, targetText, isTargetEnglish } = state.quizCurrentQuestion;
+      const isCorrect = checkAnswerMatch(inputVal, targetText, isTargetEnglish);
+
+      state.quizIsAnswered = true;
+      quizCheckBtn.disabled = true;
+
+      if (isCorrect) {
+        quizFeedback.className = 'quiz-feedback correct';
+        quizFeedback.innerHTML = `
+          <div style="font-weight: 700; font-size: 1.1rem; margin-bottom: 0.25rem;">Отлично! Верно 🎉</div>
+          <div><b>${item.word}</b> ➔ ${item.translation || ''}</div>
+        `;
+        quizFeedback.style.display = 'block';
+
+        if (!state.quizDifficultWords.has(item)) {
+          state.quizFirstTryCount++;
+        }
+        state.quizLearnedCount++;
+        state.quizQueue.shift();
+
+        speakText(item.word);
+
+        quizNextBtnRow.style.display = 'block';
+        quizNextBtn.focus();
+        setTimeout(() => {
+          if (state.quizIsAnswered && quizNextBtnRow.style.display !== 'none') {
+            advanceQuizQuestion();
+          }
+        }, 1400);
+      } else {
+        quizFeedback.className = 'quiz-feedback wrong';
+        quizFeedback.innerHTML = `
+          <div style="font-weight: 700; font-size: 1.1rem; margin-bottom: 0.25rem;">Не совсем верно! ❌</div>
+          <div>Правильный ответ: <b style="color: var(--accent); font-size: 1.15rem;">${targetText}</b></div>
+          <div style="font-size: 0.85rem; margin-top: 0.35rem; color: var(--text-muted);">
+            Слово перемещено в конец очереди, вы повторите его снова в этой серии. 🔄
+          </div>
+        `;
+        quizFeedback.style.display = 'block';
+
+        state.quizDifficultWords.add(item);
+        const curr = state.quizQueue.shift();
+        state.quizQueue.push(curr);
+
+        quizNextBtnRow.style.display = 'block';
+        quizNextBtn.focus();
+      }
+
+      quizScoreCorrect.textContent = state.quizFirstTryCount;
+      quizScoreWrong.textContent = state.quizDifficultWords.size;
+      quizQueueText.textContent = `Очередь: ${state.quizQueue.length}`;
+    }
+
+    function handleQuizChoiceAnswer(opt, chosenBtn) {
+      if (state.quizIsAnswered) return;
+      state.quizIsAnswered = true;
+
+      const { item, targetText } = state.quizCurrentQuestion;
+      const isCorrect = opt.isCorrect;
+
+      document.querySelectorAll('.quiz-option-btn').forEach(btn => {
+        btn.disabled = true;
+        if (btn === chosenBtn) {
+          btn.classList.add(isCorrect ? 'correct' : 'wrong');
+        }
+      });
+
+      if (isCorrect) {
+        if (!state.quizDifficultWords.has(item)) {
+          state.quizFirstTryCount++;
+        }
+        state.quizLearnedCount++;
+        state.quizQueue.shift();
+
+        speakText(item.word);
+
+        setTimeout(() => {
+          advanceQuizQuestion();
+        }, 850);
+      } else {
+        document.querySelectorAll('.quiz-option-btn').forEach(btn => {
+          if (btn.textContent.includes(targetText.split(',')[0].trim())) {
+            btn.classList.add('correct');
+          }
+        });
+
+        state.quizDifficultWords.add(item);
+        const curr = state.quizQueue.shift();
+        state.quizQueue.push(curr);
+
+        quizFeedback.className = 'quiz-feedback wrong';
+        quizFeedback.innerHTML = `
+          <div>Правильный ответ: <b style="color: var(--accent);">${targetText}</b></div>
+          <div style="font-size: 0.85rem; margin-top: 0.2rem; color: var(--text-muted);">Слово вернётся в конец очереди. 🔄</div>
+        `;
+        quizFeedback.style.display = 'block';
+
+        quizNextBtnRow.style.display = 'block';
+        quizNextBtn.focus();
+      }
+
+      quizScoreCorrect.textContent = state.quizFirstTryCount;
+      quizScoreWrong.textContent = state.quizDifficultWords.size;
+      quizQueueText.textContent = `Очередь: ${state.quizQueue.length}`;
+    }
+
+    function advanceQuizQuestion() {
+      renderCurrentQuizQuestion();
+    }
+
+    function quizGiveUp() {
+      if (state.quizQueue.length === 0 || state.quizIsAnswered) return;
+      const { item, targetText } = state.quizCurrentQuestion;
+
+      state.quizIsAnswered = true;
+      state.quizDifficultWords.add(item);
+      const curr = state.quizQueue.shift();
+      state.quizQueue.push(curr);
+
+      quizFeedback.className = 'quiz-feedback wrong';
+      quizFeedback.innerHTML = `
+        <div style="font-weight: 700;">💡 Ответ: <span style="color: var(--accent); font-size: 1.15rem;">${targetText}</span></div>
+        <div style="margin-top: 0.25rem;"><b>${item.word}</b> — ${item.translation || ''}</div>
+        <div style="font-size: 0.85rem; margin-top: 0.25rem; color: var(--text-muted);">Слово отправлено в конец очереди для повторения. 🔄</div>
+      `;
+      quizFeedback.style.display = 'block';
+      quizNextBtnRow.style.display = 'block';
+      quizNextBtn.focus();
+
+      quizScoreCorrect.textContent = state.quizFirstTryCount;
+      quizScoreWrong.textContent = state.quizDifficultWords.size;
+      quizQueueText.textContent = `Очередь: ${state.quizQueue.length}`;
+    }
+
+    function quizSkip() {
+      if (state.quizQueue.length === 0) return;
+      const curr = state.quizQueue.shift();
+      state.quizQueue.push(curr);
+      showToast(`Слово "${curr.word}" перемещено в конец очереди`, 'info');
+      renderCurrentQuizQuestion();
+    }
+
+    // Quiz Session Toolbar Events
+    quizSizePills.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const sz = parseInt(btn.dataset.size, 10);
+        state.quizSize = sz;
+        localStorage.setItem('dict_quiz_size', sz.toString());
+        state.quizBatchIndex = 0;
+        syncQuizControlsUI();
+        startNewQuizSession();
+        showToast(`Выбрано слов в квизе: ${sz === 0 ? 'Все слова' : sz}`, 'info');
+      });
+    });
+
+    if (quizCustomSizeBtn && quizCustomSizeInput) {
+      quizCustomSizeBtn.addEventListener('click', () => {
+        const val = parseInt(quizCustomSizeInput.value, 10);
+        if (isNaN(val) || val <= 0) return;
+        const total = state.allWords.length;
+        const clamped = total > 0 ? Math.min(val, total) : val;
+        state.quizSize = clamped;
+        localStorage.setItem('dict_quiz_size', clamped.toString());
+        state.quizBatchIndex = 0;
+        syncQuizControlsUI();
+        startNewQuizSession();
+        showToast(`Выбрано слов для квиза: ${clamped}`, 'info');
+      });
+
+      quizCustomSizeInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') quizCustomSizeBtn.click();
+      });
+    }
+
+    quizModePills.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const mode = btn.dataset.mode;
+        state.quizMode = mode;
+        localStorage.setItem('dict_quiz_mode', mode);
+        state.quizBatchIndex = 0;
+        syncQuizControlsUI();
+        startNewQuizSession();
+        showToast(`Режим квиза: ${mode === 'seq' ? 'По порядку' : 'Случайно'}`, 'info');
+      });
+    });
+
+    quizFormatPills.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const fmt = btn.dataset.format;
+        state.quizFormat = fmt;
+        localStorage.setItem('dict_quiz_format', fmt);
+        syncQuizControlsUI();
+        renderCurrentQuizQuestion();
+        showToast(`Формат: ${fmt === 'choice' ? '4 варианта' : 'Ввод текста'}`, 'info');
+      });
+    });
+
+    quizDirectionPills.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const dir = btn.dataset.dir;
+        state.quizDirection = dir;
+        localStorage.setItem('dict_quiz_dir', dir);
+        syncQuizControlsUI();
+        renderCurrentQuizQuestion();
+        showToast(`Направление: ${dir === 'word_to_trans' ? 'Слово ➔ Перевод' : dir === 'trans_to_word' ? 'Перевод ➔ Слово' : 'Смешанный'}`, 'info');
+      });
+    });
+
+    quizPrevBatchBtn.addEventListener('click', () => {
+      if (state.quizBatchIndex > 0) {
+        startNewQuizSession(state.quizBatchIndex - 1);
+      }
+    });
+
+    quizNextBatchBtn.addEventListener('click', () => {
+      const totalBatches = state.quizSize > 0 ? Math.ceil(state.allWords.length / state.quizSize) : 1;
+      if (state.quizBatchIndex < totalBatches - 1) {
+        startNewQuizSession(state.quizBatchIndex + 1);
+      }
+    });
 
     quizCheckBtn.addEventListener('click', checkQuizAnswer);
     quizInput.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') checkQuizAnswer();
     });
+    quizNextBtn.addEventListener('click', advanceQuizQuestion);
 
-    function checkQuizAnswer() {
-      if (!state.quizWord) return;
-      const input = quizInput.value.trim().toLowerCase();
-      const target = state.quizWord.word.trim().toLowerCase();
+    quizContextHintBtn.addEventListener('click', () => {
+      const isHidden = quizContextHintBox.style.display === 'none';
+      quizContextHintBox.style.display = isHidden ? 'block' : 'none';
+      quizContextHintBtn.textContent = isHidden ? '❌ Скрыть контекст' : '💡 Показать пример контекста';
+    });
 
-      if (input === target) {
-        quizFeedback.className = 'quiz-feedback correct';
-        quizFeedback.innerHTML = `<b>Correct! 🎉</b> The word is <b>${state.quizWord.word}</b>.`;
-        speakText(state.quizWord.word);
-      } else {
-        quizFeedback.className = 'quiz-feedback wrong';
-        quizFeedback.innerHTML = `<b>Not quite!</b> The correct English word is: <b>${state.quizWord.word}</b>.`;
+    quizSpeakerBtn.addEventListener('click', () => {
+      if (state.quizCurrentQuestion && state.quizCurrentQuestion.item) {
+        speakText(state.quizCurrentQuestion.item.word);
       }
-    }
+    });
 
-    quizSkipBtn.addEventListener('click', initQuizWord);
+    quizGiveUpBtn.addEventListener('click', quizGiveUp);
+    quizSkipBtn.addEventListener('click', quizSkip);
     quizDeleteBtn.addEventListener('click', () => {
-      if (state.quizWord) openDeleteModal(state.quizWord.word);
+      if (state.quizCurrentQuestion && state.quizCurrentQuestion.item) {
+        openDeleteModal(state.quizCurrentQuestion.item.word);
+      }
+    });
+
+    quizFinishRepeatDifficultBtn.addEventListener('click', startQuizDifficultSession);
+    quizFinishNextBatchBtn.addEventListener('click', () => {
+      startNewQuizSession(state.quizBatchIndex + 1);
+    });
+    quizFinishNewRandomBtn.addEventListener('click', () => {
+      startNewQuizSession();
+    });
+    quizFinishRestartBtn.addEventListener('click', () => {
+      startNewQuizSession(state.quizBatchIndex);
     });
 
     // --- Dictionary Table Logic ---
@@ -1594,6 +3472,24 @@
           deleteWordBtn.click();
         } else if (e.key.toLowerCase() === 'p') {
           cardSpeakerBtn.click();
+        }
+      } else if (activeTab === 'quiz') {
+        if (state.quizFormat === 'choice' && ['1', '2', '3', '4'].includes(e.key)) {
+          const idx = parseInt(e.key, 10) - 1;
+          const btns = document.querySelectorAll('.quiz-option-btn');
+          if (btns[idx]) btns[idx].click();
+        } else if (e.key === 'Enter') {
+          if (state.quizIsAnswered) {
+            advanceQuizQuestion();
+          } else if (state.quizFormat === 'typing') {
+            checkQuizAnswer();
+          }
+        } else if (e.key.toLowerCase() === 'p') {
+          quizSpeakerBtn.click();
+        } else if (e.key.toLowerCase() === 's') {
+          quizSkipBtn.click();
+        } else if (e.key === 'Delete') {
+          quizDeleteBtn.click();
         }
       }
     });

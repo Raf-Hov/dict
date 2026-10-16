@@ -112,7 +112,7 @@ def load_words_from_file(file_path: Union[Path, str]) -> List[Dict[str, Any]]:
     words: List[Dict[str, Any]] = []
 
     if path.suffix.lower() == ".json":
-        with open(path, "r", encoding="utf-8") as f:
+        with open(path, "r", encoding="utf-8-sig") as f:
             data = json.load(f)
 
         if isinstance(data, list):
@@ -151,7 +151,7 @@ def load_words_from_file(file_path: Union[Path, str]) -> List[Dict[str, Any]]:
                     words.append(entry)
 
     elif path.suffix.lower() == ".csv":
-        with open(path, "r", encoding="utf-8") as f:
+        with open(path, "r", encoding="utf-8-sig") as f:
             reader = csv.reader(f)
             for row in reader:
                 if len(row) >= 2:
