@@ -1,0 +1,982 @@
+[
+  {
+    "word": "behold",
+    "translation": "տեսնել, նայել (բարձր ոճ)",
+    "examples": [
+      {
+        "sentence_en": "(literary) Behold, the sun rises over the mountains.",
+        "translation_am": "(գրական) Ահա՛, արևը բարձրանում է լեռների վրա։"
+      },
+      {
+        "sentence_en": "(religious) Behold, I am with you always.",
+        "translation_am": "(կրոնական) Ահա՛, ես միշտ ձեզ հետ եմ։"
+      },
+      {
+        "sentence_en": "(presentation) Behold our newest invention!",
+        "translation_am": "(ներկայացում) Նայեք մեր ամենանոր գյուտին։"
+      },
+      {
+        "sentence_en": "(humor) Behold, the last slice of pizza!",
+        "translation_am": "(հումոր) Ահա՛, պիցայի վերջին կտորը։"
+      }
+    ]
+  },
+  {
+    "word": "kick off",
+    "translation": "սկսել, մեկնարկել (սպորտ՝ խաղը սկսել գնդակին հարվածելով)",
+    "examples": [
+      {
+        "sentence_en": "(football) The match kicks off at 8 p.m.",
+        "translation_am": "(ֆուտբոլ) Խաղը մեկնարկում է երեկոյան ժամը 8-ին։"
+      },
+      {
+        "sentence_en": "(work) Let's kick off the meeting with a quick update.",
+        "translation_am": "(աշխատանք) Եկեք հանդիպումը սկսենք կարճ տեղեկատվությամբ։"
+      },
+      {
+        "sentence_en": "(project) We will kick off the new project next Monday.",
+        "translation_am": "(նախագիծ) Նոր նախագիծը կմեկնարկենք հաջորդ երկուշաբթի։"
+      },
+      {
+        "sentence_en": "(party) The DJ kicked off the party with my favorite song.",
+        "translation_am": "(երեկույթ) Դիջեյը երեկույթը սկսեց իմ սիրելի երգով։"
+      }
+    ]
+  },
+  {
+    "word": "interrupt",
+    "translation": "ընդհատել, խանգարել",
+    "examples": [
+      {
+        "sentence_en": "(conversation) Sorry to interrupt, but can I ask a question?",
+        "translation_am": "(զրույց) Ներողություն, որ ընդհատում եմ, բայց կարելի՞ է հարց տալ։"
+      },
+      {
+        "sentence_en": "(work) Please don't interrupt me while I'm working.",
+        "translation_am": "(աշխատանք) Խնդրում եմ, ինձ մի՛ խանգարեք, մինչ աշխատում եմ։"
+      },
+      {
+        "sentence_en": "(school) The teacher told him not to interrupt other students.",
+        "translation_am": "(դպրոց) Ուսուցիչը նրան ասաց, որ չընդհատի մյուս աշակերտներին։"
+      },
+      {
+        "sentence_en": "(news) We interrupt this program for breaking news.",
+        "translation_am": "(լուրեր) Մենք ընդհատում ենք այս հաղորդումը հրատապ լուրի համար։"
+      }
+    ]
+  },
+  {
+    "word": "notice",
+    "translation": "նկատել, ուշադրություն դարձնել; (գոյական) ծանուցում, հայտարարություն",
+    "examples": [
+      {
+        "sentence_en": "(everyday) I didn't notice that you cut your hair.",
+        "translation_am": "(առօրյա) Ես չնկատեցի, որ մազերդ կտրել ես։"
+      },
+      {
+        "sentence_en": "(work) Please give me two weeks' notice before you quit.",
+        "translation_am": "(աշխատանք) Խնդրում եմ, հեռանալուց երկու շաբաթ առաջ ինձ նախազգուշացրեք։"
+      },
+      {
+        "sentence_en": "(street) There is a notice on the door: the store is closed today.",
+        "translation_am": "(փողոց) Դռան վրա հայտարարություն կա՝ խանութն այսօր փակ է։"
+      },
+      {
+        "sentence_en": "(school) The teacher noticed that he was not listening.",
+        "translation_am": "(դպրոց) Ուսուցիչը նկատեց, որ նա չի լսում։"
+      }
+    ]
+  },
+  {
+    "word": "few",
+    "translation": "քիչ, մի քանի",
+    "examples": [
+      {
+        "sentence_en": "(everyday) I have a few friends in Yerevan.",
+        "translation_am": "(առօրյա) Երևանում մի քանի ընկեր ունեմ։"
+      },
+      {
+        "sentence_en": "(shopping) There are only a few apples left in the store.",
+        "translation_am": "(գնումներ) Խանութում ընդամենը մի քանի խնձոր է մնացել։"
+      },
+      {
+        "sentence_en": "(work) Few people understood the new system.",
+        "translation_am": "(աշխատանք) Քչերն էին հասկացել նոր համակարգը։"
+      },
+      {
+        "sentence_en": "(time) Wait a few minutes, please.",
+        "translation_am": "(ժամանակ) Խնդրում եմ, սպասեք մի քանի րոպե։"
+      }
+    ]
+  },
+  {
+    "word": "thwart",
+    "translation": "խափանել, տապալել, խանգարել (պլանին, նպատակին)",
+    "examples": [
+      {
+        "sentence_en": "(crime) The police thwarted the robbery.",
+        "translation_am": "(հանցագործություն) Ոստիկանությունը խափանեց կողոպուտը։"
+      },
+      {
+        "sentence_en": "(work) Bad weather thwarted our plans for the launch.",
+        "translation_am": "(աշխատանք) Վատ եղանակը տապալեց մեր գործարկման պլանները։"
+      },
+      {
+        "sentence_en": "(sport) The goalkeeper thwarted every attack.",
+        "translation_am": "(սպորտ) Դարպասապահը խափանեց յուրաքանչյուր գրոհ։"
+      },
+      {
+        "sentence_en": "(personal) Nothing could thwart her dream of becoming a doctor.",
+        "translation_am": "(անձնական) Ոչինչ չէր կարող խանգարել նրա երազանքին՝ բժիշկ դառնալուն։"
+      }
+    ]
+  },
+  {
+    "word": "pushed",
+    "translation": "հրել, հրեց (push-ի անցյալ ժամանակ); ստիպել, ճնշում գործադրել; (git) ուղարկել կոդը սերվեր",
+    "examples": [
+      {
+        "sentence_en": "(everyday) He pushed the door, but it was locked.",
+        "translation_am": "(առօրյա) Նա հրեց դուռը, բայց այն փակ էր։"
+      },
+      {
+        "sentence_en": "(crowd) Someone pushed me in the crowded metro.",
+        "translation_am": "(բազմություն) Ինչ-որ մեկը հրեց ինձ մարդաշատ մետրոյում։"
+      },
+      {
+        "sentence_en": "(work) My boss pushed me to finish the report by Friday.",
+        "translation_am": "(աշխատանք) Ղեկավարս ինձ ստիպեց հաշվետվությունն ավարտել ուրբաթ օրվա մեջ։"
+      },
+      {
+        "sentence_en": "(programming) I pushed my changes to GitHub this morning.",
+        "translation_am": "(ծրագրավորում) Այս առավոտ ես իմ փոփոխությունները ուղարկեցի GitHub։"
+      }
+    ]
+  },
+  {
+    "word": "accomplish",
+    "translation": "կատարել, իրականացնել, հասնել (նպատակի), կարողանալ անել",
+    "examples": [
+      {
+        "sentence_en": "(work) We accomplished all our goals this quarter.",
+        "translation_am": "(աշխատանք) Այս եռամսյակում մենք իրականացրինք մեր բոլոր նպատակները։"
+      },
+      {
+        "sentence_en": "(school) She accomplished a lot during her first year at university.",
+        "translation_am": "(դպրոց) Համալսարանի առաջին տարում նա շատ բան կարողացավ անել։"
+      },
+      {
+        "sentence_en": "(everyday) I didn't accomplish anything today.",
+        "translation_am": "(առօրյա) Այսօր ես ոչինչ չարեցի։"
+      },
+      {
+        "sentence_en": "(sport) It takes years of training to accomplish something like that.",
+        "translation_am": "(սպորտ) Նման բանի հասնելու համար տարիների մարզում է պետք։"
+      }
+    ]
+  },
+  {
+    "word": "sample",
+    "translation": "նմուշ, օրինակ; (բայ) նմուշ վերցնել, փորձել",
+    "examples": [
+      {
+        "sentence_en": "(shopping) The store gave me a free sample of the new cheese.",
+        "translation_am": "(գնումներ) Խանութն ինձ անվճար նմուշ տվեց նոր պանրից։"
+      },
+      {
+        "sentence_en": "(science) The doctor took a blood sample for the test.",
+        "translation_am": "(գիտություն) Բժիշկը անալիզի համար արյան նմուշ վերցրեց։"
+      },
+      {
+        "sentence_en": "(work) Could you send me a sample of your work?",
+        "translation_am": "(աշխատանք) Կարո՞ղ եք ինձ ուղարկել ձեր աշխատանքի օրինակ։"
+      },
+      {
+        "sentence_en": "(survey) We surveyed a sample of 500 students.",
+        "translation_am": "(հարցում) Մենք հարցում անցկացրինք 500 ուսանողից բաղկացած նմուշի շրջանում։"
+      }
+    ]
+  },
+  {
+    "word": "affect",
+    "translation": "ազդել, ազդեցություն ունենալ; (զգացմունքների մասին) հուզել, ազդել",
+    "examples": [
+      {
+        "sentence_en": "(health) Lack of sleep affects your memory.",
+        "translation_am": "(առողջություն) Քնի պակասը ազդում է հիշողության վրա։"
+      },
+      {
+        "sentence_en": "(weather) The storm affected thousands of people.",
+        "translation_am": "(եղանակ) Փոթորիկը ազդեց հազարավոր մարդկանց վրա։"
+      },
+      {
+        "sentence_en": "(work) The new law will affect all small businesses.",
+        "translation_am": "(աշխատանք) Նոր օրենքը կազդի բոլոր փոքր բիզնեսների վրա։"
+      },
+      {
+        "sentence_en": "(feelings) His words affected her deeply.",
+        "translation_am": "(զգացմունքներ) Նրա խոսքերը խորապես հուզեցին նրան։"
+      }
+    ]
+  },
+  {
+    "word": "effect",
+    "translation": "ազդեցություն, հետևանք, էֆեկտ; (բայ, պաշտոնական) իրականացնել, առաջացնել",
+    "examples": [
+      {
+        "sentence_en": "(health) The medicine had a strong effect on his headache.",
+        "translation_am": "(առողջություն) Դեղը ուժեղ ազդեցություն ունեցավ նրա գլխացավի վրա։"
+      },
+      {
+        "sentence_en": "(environment) Climate change has a serious effect on farming.",
+        "translation_am": "(շրջակա միջավայր) Կլիմայի փոփոխությունը լուրջ ազդեցություն ունի գյուղատնտեսության վրա։"
+      },
+      {
+        "sentence_en": "(movies) The special effects in this film are amazing.",
+        "translation_am": "(կինո) Այս ֆիլմի հատուկ էֆեկտները զարմանալի են։"
+      },
+      {
+        "sentence_en": "(law) The new rule goes into effect on January 1.",
+        "translation_am": "(օրենք) Նոր կանոնը ուժի մեջ է մտնում հունվարի 1-ին։"
+      }
+    ]
+  },
+  {
+    "word": "loose",
+    "translation": "ազատ, չամրացված, թուլացած; (հագուստ) լայն; (բայ, հազվադեպ) ազատ արձակել",
+    "examples": [
+      {
+        "sentence_en": "(clothes) These jeans are too loose, I need a smaller size.",
+        "translation_am": "(հագուստ) Այս ջինսերը շատ լայն են, ինձ ավելի փոքր չափս է պետք։"
+      },
+      {
+        "sentence_en": "(repair) The screw is loose, so the shelf is shaking.",
+        "translation_am": "(վերանորոգում) Պտուտակը թուլացած է, դրա համար դարակը դողում է։"
+      },
+      {
+        "sentence_en": "(animals) The dog got loose and ran into the street.",
+        "translation_am": "(կենդանիներ) Շունը ազատվեց կապից և վազեց փողոց։"
+      },
+      {
+        "sentence_en": "(everyday) I keep loose change in my pocket.",
+        "translation_am": "(առօրյա) Ես գրպանումս մանր դրամ եմ պահում։"
+      }
+    ]
+  },
+  {
+    "word": "reveal",
+    "translation": "բացահայտել, ցույց տալ, հայտնել",
+    "examples": [
+      {
+        "sentence_en": "(secret) She didn't reveal the name of the winner.",
+        "translation_am": "(գաղտնիք) Նա չբացահայտեց հաղթողի անունը։"
+      },
+      {
+        "sentence_en": "(presentation) The company will reveal its new phone next week.",
+        "translation_am": "(ներկայացում) Ընկերությունը հաջորդ շաբաթ կներկայացնի իր նոր հեռախոսը։"
+      },
+      {
+        "sentence_en": "(research) The test results revealed a serious problem.",
+        "translation_am": "(հետազոտություն) Թեստի արդյունքները բացահայտեցին լուրջ խնդիր։"
+      },
+      {
+        "sentence_en": "(friends) He finally revealed why he was late.",
+        "translation_am": "(ընկերներ) Նա վերջապես հայտնեց, թե ինչու էր ուշացել։"
+      }
+    ]
+  },
+  {
+    "word": "exploded",
+    "translation": "պայթեց, պայթել է (explode-ի անցյալ ժամանակ); կտրուկ աճեց; կատաղությունից պայթեց",
+    "examples": [
+      {
+        "sentence_en": "(news) The bomb exploded near the old building, but no one was hurt.",
+        "translation_am": "(լուրեր) Ռումբը պայթեց հին շենքի մոտ, բայց ոչ ոք չտուժեց։"
+      },
+      {
+        "sentence_en": "(everyday) The battery exploded while I was charging my phone.",
+        "translation_am": "(առօրյա) Մարտկոցը պայթեց, մինչ ես հեռախոսս լիցքավորում էի։"
+      },
+      {
+        "sentence_en": "(business) Sales exploded after the ad went viral.",
+        "translation_am": "(բիզնես) Վաճառքները կտրուկ աճեցին, երբ գովազդը հայտնի դարձավ։"
+      },
+      {
+        "sentence_en": "(emotions) He exploded with anger when he saw the mess.",
+        "translation_am": "(հույզեր) Նա զայրույթից պայթեց, երբ տեսավ խառնաշփոթը։"
+      }
+    ]
+  },
+  {
+    "word": "toppled over",
+    "translation": "ընկավ, տապալվեց, շրջվեց (topple over-ի անցյալ ժամանակ)",
+    "examples": [
+      {
+        "sentence_en": "(everyday) The pile of books toppled over when I opened the door.",
+        "translation_am": "(առօրյա) Գրքերի կույտը տապալվեց, երբ ես դուռը բացեցի։"
+      },
+      {
+        "sentence_en": "(storm) The strong wind toppled over an old tree in our yard.",
+        "translation_am": "(փոթորիկ) Ուժեղ քամին մեր բակի հին ծառը տապալեց։"
+      },
+      {
+        "sentence_en": "(kids) The tower of blocks toppled over, and the baby laughed.",
+        "translation_am": "(երեխաներ) Խորանարդիկների աշտարակը փլվեց, և երեխան ծիծաղեց։"
+      },
+      {
+        "sentence_en": "(sport) The wrestler toppled over after a powerful push.",
+        "translation_am": "(սպորտ) Ըմբիշը ընկավ հզոր հրումից հետո։"
+      }
+    ]
+  },
+  {
+    "word": "manifest",
+    "translation": "դրսևորվել, երևալ, ի հայտ գալ; ակնհայտ; (գոյական) բեռնագիր, ուղևորների ցուցակ",
+    "examples": [
+      {
+        "sentence_en": "(health) The disease first manifested as a mild cough.",
+        "translation_am": "(առողջություն) Հիվանդությունն առաջին անգամ դրսևորվեց թեթև հազով։"
+      },
+      {
+        "sentence_en": "(emotions) His fear manifested itself in anger.",
+        "translation_am": "(հույզեր) Նրա վախը դրսևորվեց զայրույթի տեսքով։"
+      },
+      {
+        "sentence_en": "(formal) There was a manifest error in the report.",
+        "translation_am": "(պաշտոնական) Հաշվետվության մեջ ակնհայտ սխալ կար։"
+      },
+      {
+        "sentence_en": "(shipping) The cargo manifest lists every item on the ship.",
+        "translation_am": "(բեռնափոխադրում) Բեռնագիրը թվարկում է նավի վրա գտնվող յուրաքանչյուր ապրանք։"
+      },
+      {
+        "sentence_en": "(self-help) She believes that positive thinking can help you manifest your goals.",
+        "translation_am": "(անձնային զարգացում) Նա հավատում է, որ դրական մտածելը կարող է օգնել քեզ իրականացնել քո նպատակները։"
+      }
+    ]
+  },
+  {
+    "word": "shape",
+    "translation": "ձև, տեսք, կերպարանք; (վիճակ) մարզավիճակ, վիճակ; (բայ) ձևավորել, ձև տալ",
+    "examples": [
+      {
+        "sentence_en": "(everyday) What shape is the table, round or square?",
+        "translation_am": "(առօրյա) Ինչ ձև ունի սեղանը՝ կլո՞ր, թե՞ քառակուսի։"
+      },
+      {
+        "sentence_en": "(fitness) I'm trying to get in shape before summer.",
+        "translation_am": "(մարզում) Ես փորձում եմ ամառից առաջ մարզավիճակս բարելավել։"
+      },
+      {
+        "sentence_en": "(work) Good teachers shape the way children think.",
+        "translation_am": "(աշխատանք) Լավ ուսուցիչները ձևավորում են երեխաների մտածելակերպը։"
+      },
+      {
+        "sentence_en": "(cooking) She shaped the dough into small balls.",
+        "translation_am": "(խոհարարություն) Նա խմորից փոքր գնդիկներ ձևավորեց։"
+      },
+      {
+        "sentence_en": "(condition) The car is in bad shape, so we need to repair it.",
+        "translation_am": "(վիճակ) Մեքենան վատ վիճակում է, ուստի պետք է վերանորոգենք այն։"
+      }
+    ]
+  },
+  {
+    "word": "contribute to",
+    "translation": "ներդրում ունենալ, նպաստել, մասնակցել (ինչ-որ բանի); ավանդ ունենալ; նվիրաբերել",
+    "examples": [
+      {
+        "sentence_en": "(health) Too much sugar contributes to health problems.",
+        "translation_am": "(առողջություն) Շատ շաքարը նպաստում է առողջական խնդիրներին։"
+      },
+      {
+        "sentence_en": "(work) Everyone on the team contributed to the success of the project.",
+        "translation_am": "(աշխատանք) Թիմի յուրաքանչյուր անդամ ներդրում ունեցավ նախագծի հաջողության մեջ։"
+      },
+      {
+        "sentence_en": "(charity) I contribute to a local charity every month.",
+        "translation_am": "(բարեգործություն) Ես ամեն ամիս նվիրաբերում եմ տեղական բարեգործական կազմակերպությանը։"
+      },
+      {
+        "sentence_en": "(programming) She contributes to several open-source projects on GitHub.",
+        "translation_am": "(ծրագրավորում) Նա ներդրում ունի GitHub-ի մի քանի բաց կոդով նախագծերում։"
+      },
+      {
+        "sentence_en": "(environment) Cars and factories contribute to air pollution.",
+        "translation_am": "(շրջակա միջավայր) Մեքենաներն ու գործարանները նպաստում են օդի աղտոտմանը։"
+      }
+    ]
+  },
+  {
+    "word": "looking forward to",
+    "translation": "անհամբերությամբ սպասել, ուրախությամբ սպասել (ինչ-որ բանի)",
+    "examples": [
+      {
+        "sentence_en": "(everyday) I'm looking forward to the weekend.",
+        "translation_am": "(առօրյա) Ես անհամբերությամբ սպասում եմ հանգստյան օրերին։"
+      },
+      {
+        "sentence_en": "(email) I look forward to hearing from you.",
+        "translation_am": "(նամակ) Սպասում եմ ձեր պատասխանին։"
+      },
+      {
+        "sentence_en": "(work) We are looking forward to working with your team.",
+        "translation_am": "(աշխատանք) Մենք անհամբերությամբ սպասում ենք ձեր թիմի հետ համագործակցությանը։"
+      },
+      {
+        "sentence_en": "(friends) I'm really looking forward to seeing you again.",
+        "translation_am": "(ընկերներ) Ես իսկապես անհամբերությամբ սպասում եմ քեզ նորից տեսնելուն։"
+      },
+      {
+        "sentence_en": "(travel) The kids are looking forward to the trip to the sea.",
+        "translation_am": "(ճանապարհորդություն) Երեխաները անհամբերությամբ սպասում են ծովափ մեկնելուն։"
+      }
+    ]
+  },
+  {
+    "word": "hang",
+    "translation": "կախել, կախվել; (խոսակցական) ժամանակ անցկացնել (hang out); (համակարգիչ) կախվել",
+    "examples": [
+      {
+        "sentence_en": "(home) I need to hang this picture on the wall.",
+        "translation_am": "(տուն) Ես պետք է այս նկարը պատին կախեմ։"
+      },
+      {
+        "sentence_en": "(clothes) Please hang your coat in the closet.",
+        "translation_am": "(հագուստ) Խնդրում եմ, վերարկուդ պահարանում կախիր։"
+      },
+      {
+        "sentence_en": "(friends) We usually hang out at the park after school.",
+        "translation_am": "(ընկերներ) Մենք սովորաբար դպրոցից հետո զբոսայգում ժամանակ ենք անցկացնում։"
+      },
+      {
+        "sentence_en": "(computer) My laptop hangs every time I open this program.",
+        "translation_am": "(համակարգիչ) Իմ նոութբուքը կախվում է ամեն անգամ, երբ այս ծրագիրը բացում եմ։"
+      },
+      {
+        "sentence_en": "(phone) Don't hang up, I need to tell you something.",
+        "translation_am": "(հեռախոս) Մի՛ անջատիր, պետք է քեզ մի բան ասեմ։"
+      }
+    ]
+  },
+  {
+    "word": "powers of",
+    "translation": "ուժեր, կարողություններ, լիազորություններ; (մաթեմատիկա) աստիճաններ (օր.՝ երկուսի աստիճաններ)",
+    "examples": [
+      {
+        "sentence_en": "(math) 8 and 16 are powers of 2.",
+        "translation_am": "(մաթեմատիկա) 8-ը և 16-ը 2-ի աստիճաններ են։"
+      },
+      {
+        "sentence_en": "(programming) Memory sizes are usually powers of two.",
+        "translation_am": "(ծրագրավորում) Հիշողության չափերը սովորաբար երկուսի աստիճաններ են։"
+      },
+      {
+        "sentence_en": "(politics) The powers of the president are limited by the constitution.",
+        "translation_am": "(քաղաքականություն) Նախագահի լիազորությունները սահմանափակված են սահմանադրությամբ։"
+      },
+      {
+        "sentence_en": "(fantasy) The hero discovers the powers of the ancient stone.",
+        "translation_am": "(ֆանտազիա) Հերոսը բացահայտում է հին քարի ուժերը։"
+      },
+      {
+        "sentence_en": "(everyday) He was in full possession of his powers of concentration.",
+        "translation_am": "(առօրյա) Նա լիովին տիրապետում էր իր կենտրոնանալու ունակությանը։"
+      }
+    ]
+  },
+  {
+    "word": "unless",
+    "translation": "եթե ... չէ, եթե չ- (պայման), բացառությամբ այն դեպքի, երբ",
+    "examples": [
+      {
+        "sentence_en": "(everyday) I will go for a walk unless it rains.",
+        "translation_am": "(առօրյա) Ես զբոսնելու կգնամ, եթե անձրև չգա։"
+      },
+      {
+        "sentence_en": "(work) You can't enter the office unless you have a badge.",
+        "translation_am": "(աշխատանք) Դուք չեք կարող մտնել գրասենյակ, եթե բեյջ չունեք։"
+      },
+      {
+        "sentence_en": "(school) Unless you study, you won't pass the exam.",
+        "translation_am": "(դպրոց) Եթե չսովորես, քննությունը չես հանձնի։"
+      },
+      {
+        "sentence_en": "(friends) Don't call me unless it's urgent.",
+        "translation_am": "(ընկերներ) Ինձ մի՛ զանգիր, եթե հրատապ չէ։"
+      },
+      {
+        "sentence_en": "(programming) The program will crash unless you handle this error.",
+        "translation_am": "(ծրագրավորում) Ծրագիրը կխափանվի, եթե այս սխալը չմշակես։"
+      }
+    ]
+  },
+  {
+    "word": "exhausting",
+    "translation": "հյուծող, հոգնեցուցիչ, ուժասպառ անող; (exhaust-ի -ing ձև) սպառող, սպառելը",
+    "examples": [
+      {
+        "sentence_en": "(work) It was an exhausting day, and I fell asleep immediately.",
+        "translation_am": "(աշխատանք) Դա հյուծող օր էր, և ես անմիջապես քնեցի։"
+      },
+      {
+        "sentence_en": "(sport) Running a marathon is exhausting.",
+        "translation_am": "(սպորտ) Մարաթոն վազելը հյուծող է։"
+      },
+      {
+        "sentence_en": "(parenting) Taking care of a newborn baby can be exhausting.",
+        "translation_am": "(ծնողություն) Նորածնի խնամելը կարող է հոգնեցուցիչ լինել։"
+      },
+      {
+        "sentence_en": "(travel) The long flight was exhausting.",
+        "translation_am": "(ճանապարհորդություն) Երկար չվերթը հոգնեցուցիչ էր։"
+      },
+      {
+        "sentence_en": "(programming) Debugging this code is mentally exhausting.",
+        "translation_am": "(ծրագրավորում) Այս կոդի սխալները փնտրելը մտավոր առումով հյուծող է։"
+      }
+    ]
+  },
+  {
+    "word": "decline",
+    "translation": "մերժել (քաղաքավարի), հրաժարվել; նվազել, անկում ապրել; (գոյական) անկում, նվազում",
+    "examples": [
+      {
+        "sentence_en": "(invitation) I had to decline the invitation because I was busy.",
+        "translation_am": "(հրավեր) Ես ստիպված եղա հրաժարվել հրավերից, քանի որ զբաղված էի։"
+      },
+      {
+        "sentence_en": "(work) She declined the job offer and stayed at her current company.",
+        "translation_am": "(աշխատանք) Նա մերժեց աշխատանքային առաջարկը և մնաց իր ընթացիկ ընկերությունում։"
+      },
+      {
+        "sentence_en": "(business) Sales have declined over the last three months.",
+        "translation_am": "(բիզնես) Վաճառքները նվազել են վերջին երեք ամսվա ընթացքում։"
+      },
+      {
+        "sentence_en": "(health) His health began to decline after the age of 80.",
+        "translation_am": "(առողջություն) Նրա առողջությունը սկսեց վատանալ 80 տարեկանից հետո։"
+      },
+      {
+        "sentence_en": "(statistics) There has been a sharp decline in the number of tourists.",
+        "translation_am": "(վիճակագրություն) Զբոսաշրջիկների թվի կտրուկ նվազում է գրանցվել։"
+      }
+    ]
+  },
+  {
+    "word": "thorn",
+    "translation": "փուշ, փշոտ բույս; (փոխաբերական) նեղություն պատճառող բան, «փուշ մարմնում»",
+    "examples": [
+      {
+        "sentence_en": "(garden) The rose has sharp thorns, so wear gloves.",
+        "translation_am": "(այգի) Վարդն ունի սուր փշեր, ուստի ձեռնոցներ հագիր։"
+      },
+      {
+        "sentence_en": "(everyday) A thorn got stuck in my finger while I was picking berries.",
+        "translation_am": "(առօրյա) Փուշը մատիս մեջ մխրճվեց, մինչ հատապտուղներ էի քաղում։"
+      },
+      {
+        "sentence_en": "(idiom) Their noisy neighbor is a thorn in their side.",
+        "translation_am": "(դարձվածք) Նրանց աղմկոտ հարևանը փուշ է նրանց համար։"
+      },
+      {
+        "sentence_en": "(work) The slow approval process has been a thorn in our side for years.",
+        "translation_am": "(աշխատանք) Հաստատման դանդաղ գործընթացը տարիներ շարունակ մեզ համար գլխացավանք է։"
+      },
+      {
+        "sentence_en": "(literature) There is no rose without a thorn.",
+        "translation_am": "(գրականություն) Փշաթափ վարդ չկա։"
+      }
+    ]
+  },
+  {
+    "word": "remain",
+    "translation": "մնալ, մնացած լինել, շարունակել լինել (որևէ վիճակում)",
+    "examples": [
+      {
+        "sentence_en": "(everyday) Please remain seated until the plane stops.",
+        "translation_am": "(առօրյա) Խնդրում ենք նստած մնալ մինչև ինքնաթիռի կանգառը։"
+      },
+      {
+        "sentence_en": "(news) The situation remains unclear.",
+        "translation_am": "(լուրեր) Իրավիճակը մնում է անհասկանալի։"
+      },
+      {
+        "sentence_en": "(work) Only two tasks remain on the list.",
+        "translation_am": "(աշխատանք) Ցուցակում միայն երկու առաջադրանք է մնացել։"
+      },
+      {
+        "sentence_en": "(friends) We remained friends even after he moved abroad.",
+        "translation_am": "(ընկերներ) Մենք ընկեր մնացինք նույնիսկ այն բանից հետո, երբ նա արտերկիր տեղափոխվեց։"
+      },
+      {
+        "sentence_en": "(history) Only the ruins of the old castle remain today.",
+        "translation_am": "(պատմություն) Այսօր հին ամրոցից մնացել են միայն ավերակները։"
+      }
+    ]
+  },
+  {
+    "word": "along",
+    "translation": "երկայնքով, ճանապարհին; հետ (along with); առաջ (move along)",
+    "examples": [
+      {
+        "sentence_en": "(walking) We walked along the river for an hour.",
+        "translation_am": "(զբոսանք) Մենք մի ժամ գետի երկայնքով քայլեցինք։"
+      },
+      {
+        "sentence_en": "(directions) Go along this street until you see a bank.",
+        "translation_am": "(ուղղություն) Գնա այս փողոցի երկայնքով, մինչև բանկ տեսնես։"
+      },
+      {
+        "sentence_en": "(friends) Why don't you come along with us to the cinema?",
+        "translation_am": "(ընկերներ) Ինչո՞ւ չես գալիս մեզ հետ կինոթատրոն։"
+      },
+      {
+        "sentence_en": "(work) Bring your laptop along to the meeting.",
+        "translation_am": "(աշխատանք) Հանդիպման ժամանակ նոութբուքդ էլ վերցրու քեզ հետ։"
+      },
+      {
+        "sentence_en": "(everyday) How is your project coming along?",
+        "translation_am": "(առօրյա) Ինչպե՞ս է ընթանում քո նախագիծը։"
+      }
+    ]
+  },
+  {
+    "word": "across",
+    "translation": "մյուս կողմը, միջով, ամբողջ ... վրա; (come across) պատահաբար հանդիպել, պատահաբար գտնել",
+    "examples": [
+      {
+        "sentence_en": "(street) Be careful when you walk across the street.",
+        "translation_am": "(փողոց) Զգույշ եղիր, երբ փողոցն անցնում ես։"
+      },
+      {
+        "sentence_en": "(location) The bank is across from the post office.",
+        "translation_am": "(վայր) Բանկը փոստի դիմաց է։"
+      },
+      {
+        "sentence_en": "(travel) He traveled across Europe by train last summer.",
+        "translation_am": "(ճանապարհորդություն) Անցյալ ամառ նա գնացքով անցավ ամբողջ Եվրոպան։"
+      },
+      {
+        "sentence_en": "(everyday) I came across my old school photos yesterday.",
+        "translation_am": "(առօրյա) Երեկ պատահաբար գտա դպրոցական հին նկարներս։"
+      },
+      {
+        "sentence_en": "(programming) The same bug appears across all our servers.",
+        "translation_am": "(ծրագրավորում) Նույն սխալը հայտնվում է մեր բոլոր սերվերներում։"
+      }
+    ]
+  },
+  {
+    "word": "serves you right",
+    "translation": "լավ էլ արժանի ես, քեզ հենց այդպես էլ պետք է, քո արածի պտուղն է",
+    "examples": [
+      {
+        "sentence_en": "(friends) You didn't study at all, so failing the test serves you right.",
+        "translation_am": "(ընկերներ) Դու ընդհանրապես չէիր սովորել, ուստի քննությունից կտրվելը քեզ հենց այդպես էլ պետք է։"
+      },
+      {
+        "sentence_en": "(everyday) You ate five slices of cake, so it serves you right that your stomach hurts.",
+        "translation_am": "(առօրյա) Դու տորթի հինգ կտոր կերար, այնպես որ փորդ ցավելը քեզ հենց այդպես էլ պետք է։"
+      },
+      {
+        "sentence_en": "(siblings) I told you not to touch my things. Serves you right!",
+        "translation_am": "(եղբայր/քույր) Ասել էի՝ իմ իրերին մի՛ դիպչիր։ Հենց էդպես էլ պետք է քեզ։"
+      },
+      {
+        "sentence_en": "(work) He cheated the company, and now he's fired. It serves him right.",
+        "translation_am": "(աշխատանք) Նա խաբեց ընկերությանը, իսկ հիմա աշխատանքից ազատվել է։ Նրան հենց այդպես էլ պետք է։"
+      },
+      {
+        "sentence_en": "(sport) The team didn't train and lost every match. Serves them right.",
+        "translation_am": "(սպորտ) Թիմը չէր մարզվում և բոլոր խաղերը պարտվեց։ Նրանց հենց այդպես էլ պետք է։"
+      }
+    ]
+  },
+  {
+    "word": "proper",
+    "translation": "պատշաճ, ճիշտ, համապատասխան; իսկական, նորմալ; (քերականություն) հատուկ (proper noun)",
+    "examples": [
+      {
+        "sentence_en": "(everyday) You need a proper coat for this cold weather.",
+        "translation_am": "(առօրյա) Այս ցրտին քեզ իսկական վերարկու է պետք։"
+      },
+      {
+        "sentence_en": "(work) Please follow the proper procedure when you report a problem.",
+        "translation_am": "(աշխատանք) Խնդրում եմ, խնդիր զեկուցելիս հետևեք պատշաճ ընթացակարգին։"
+      },
+      {
+        "sentence_en": "(manners) It's not proper to talk with your mouth full.",
+        "translation_am": "(վարք) Անպարկեշտ է լիքը բերանով խոսելը։"
+      },
+      {
+        "sentence_en": "(grammar) 'Yerevan' is a proper noun, so it starts with a capital letter.",
+        "translation_am": "(քերականություն) «Yerevan»-ը հատուկ գոյական է, ուստի սկսվում է մեծատառով։"
+      },
+      {
+        "sentence_en": "(computer) The program doesn't work properly on my old laptop.",
+        "translation_am": "(համակարգիչ) Ծրագիրը իմ հին նոութբուքի վրա ճիշտ չի աշխատում։"
+      }
+    ]
+  },
+  {
+    "word": "arrange",
+    "translation": "դասավորել, կարգի բերել; կազմակերպել, պայմանավորվել, կարգավորել",
+    "examples": [
+      {
+        "sentence_en": "(home) She arranged the flowers in a vase.",
+        "translation_am": "(տուն) Նա ծաղիկները դասավորեց ծաղկամանի մեջ։"
+      },
+      {
+        "sentence_en": "(work) Can you arrange a meeting with the manager for tomorrow?",
+        "translation_am": "(աշխատանք) Կարո՞ղ եք վաղվա համար հանդիպում կազմակերպել ղեկավարի հետ։"
+      },
+      {
+        "sentence_en": "(travel) We arranged a taxi to take us to the airport.",
+        "translation_am": "(ճանապարհորդություն) Մենք տաքսի պատվիրեցինք, որ մեզ օդանավակայան տանի։"
+      },
+      {
+        "sentence_en": "(friends) I arranged to meet Anna at 6 p.m. near the cinema.",
+        "translation_am": "(ընկերներ) Ես Աննայի հետ պայմանավորվեցի հանդիպել երեկոյան ժամը 6-ին կինոթատրոնի մոտ։"
+      },
+      {
+        "sentence_en": "(music) He arranged the song for guitar and piano.",
+        "translation_am": "(երաժշտություն) Նա երգը մշակեց կիթառի և դաշնամուրի համար։"
+      }
+    ]
+  },
+  {
+    "word": "handle",
+    "translation": "կառավարել, հաղթահարել, զբաղվել, մշակել; (գոյական) բռնակ, կոթ",
+    "examples": [
+      {
+        "sentence_en": "(door) The door handle is broken, so I can't open it.",
+        "translation_am": "(դուռ) Դռան բռնակը կոտրված է, ուստի չեմ կարողանում բացել։"
+      },
+      {
+        "sentence_en": "(work) Don't worry, I can handle this problem by myself.",
+        "translation_am": "(աշխատանք) Մի՛ անհանգստացիր, այս խնդիրը ես ինքս կարող եմ լուծել։"
+      },
+      {
+        "sentence_en": "(stress) She can't handle so much pressure at work.",
+        "translation_am": "(սթրես) Նա չի կարողանում դիմանալ աշխատանքի այդքան մեծ ճնշմանը։"
+      },
+      {
+        "sentence_en": "(careful) Please handle the glass box with care.",
+        "translation_am": "(զգույշ) Խնդրում եմ, ապակե տուփին զգույշ վերաբերվեք։"
+      },
+      {
+        "sentence_en": "(programming) The function handles errors when the file is missing.",
+        "translation_am": "(ծրագրավորում) Ֆունկցիան մշակում է սխալները, երբ ֆայլը բացակայում է։"
+      }
+    ]
+  },
+  {
+    "word": "reply",
+    "translation": "պատասխանել, պատասխան տալ; (գոյական) պատասխան",
+    "examples": [
+      {
+        "sentence_en": "(message) I'll reply to your message as soon as I get home.",
+        "translation_am": "(հաղորդագրություն) Քո հաղորդագրությանը կպատասխանեմ, հենց տուն հասնեմ։"
+      },
+      {
+        "sentence_en": "(email) Please reply to this email by Friday.",
+        "translation_am": "(նամակ) Խնդրում եմ, այս նամակին պատասխանեք ուրբաթ օրվա մեջ։"
+      },
+      {
+        "sentence_en": "(conversation) When I asked her about the trip, she replied with a smile.",
+        "translation_am": "(զրույց) Երբ նրան ճանապարհորդության մասին հարցրի, նա ժպիտով պատասխանեց։"
+      },
+      {
+        "sentence_en": "(work) We're still waiting for a reply from the client.",
+        "translation_am": "(աշխատանք) Մենք դեռ սպասում ենք հաճախորդի պատասխանին։"
+      },
+      {
+        "sentence_en": "(chat) He didn't reply, so I called him.",
+        "translation_am": "(չատ) Նա չպատասխանեց, ուստի ես զանգահարեցի նրան։"
+      }
+    ]
+  },
+  {
+    "word": "over",
+    "translation": "վրայով, վրա; ավարտված; ավելի քան; (over- նախածանց) չափից ավելի",
+    "examples": [
+      {
+        "sentence_en": "(location) There's a bridge over the river.",
+        "translation_am": "(վայր) Գետի վրայով կամուրջ կա։"
+      },
+      {
+        "sentence_en": "(time) The meeting is over, so we can go home.",
+        "translation_am": "(ժամանակ) Հանդիպումն ավարտվեց, ուստի կարող ենք տուն գնալ։"
+      },
+      {
+        "sentence_en": "(amount) There were over 200 people at the concert.",
+        "translation_am": "(քանակ) Համերգին 200-ից ավելի մարդ կար։"
+      },
+      {
+        "sentence_en": "(phone) I called her, but she didn't pick up, so I called over and over again.",
+        "translation_am": "(հեռախոս) Ես զանգեցի նրան, բայց չպատասխանեց, ուստի կրկին ու կրկին զանգեցի։"
+      },
+      {
+        "sentence_en": "(everyday) He was so tired that he fell asleep over his homework.",
+        "translation_am": "(առօրյա) Նա այնքան հոգնած էր, որ քնեց տնային աշխատանք անելիս։"
+      }
+    ]
+  },
+  {
+    "word": "fence",
+    "translation": "ցանկապատ; (բայ) ցանկապատել; (սպորտ) սուսերամարտ անել",
+    "examples": [
+      {
+        "sentence_en": "(garden) We built a wooden fence around the garden.",
+        "translation_am": "(այգի) Մենք այգու շուրջ փայտե ցանկապատ կառուցեցինք։"
+      },
+      {
+        "sentence_en": "(neighbors) Their dog jumped over the fence into our yard.",
+        "translation_am": "(հարևաններ) Նրանց շունը ցանկապատով թռավ մեր բակ։"
+      },
+      {
+        "sentence_en": "(idiom) He's still sitting on the fence about the new job offer.",
+        "translation_am": "(դարձվածք) Նա դեռ երկվության մեջ է նոր աշխատանքի առաջարկի հարցում։"
+      },
+      {
+        "sentence_en": "(sport) She has practiced fencing since she was ten.",
+        "translation_am": "(սպորտ) Նա տասը տարեկանից սուսերամարտով է զբաղվում։"
+      },
+      {
+        "sentence_en": "(work) We need to fence off this area during construction.",
+        "translation_am": "(աշխատանք) Շինարարության ընթացքում մենք պետք է ցանկապատենք այս տարածքը։"
+      }
+    ]
+  },
+  {
+    "word": "acquaintance",
+    "translation": "ծանոթ (մարդ), ծանոթություն",
+    "examples": [
+      {
+        "sentence_en": "(everyday) He's not a close friend, just an acquaintance from work.",
+        "translation_am": "(առօրյա) Նա մտերիմ ընկեր չէ, պարզապես ծանոթ է աշխատանքից։"
+      },
+      {
+        "sentence_en": "(networking) I made a lot of new acquaintances at the conference.",
+        "translation_am": "(հարաբերություններ) Կոնֆերանսում ես շատ նոր ծանոթություններ հաստատեցի։"
+      },
+      {
+        "sentence_en": "(formal) I made her acquaintance at a friend's wedding.",
+        "translation_am": "(պաշտոնական) Ես նրա հետ ծանոթացա ընկերոջս հարսանիքին։"
+      },
+      {
+        "sentence_en": "(social) She has a wide circle of acquaintances in the city.",
+        "translation_am": "(հասարակություն) Նա քաղաքում ունի ծանոթների լայն շրջանակ։"
+      },
+      {
+        "sentence_en": "(idiom) It's always nice to make the acquaintance of someone new.",
+        "translation_am": "(դարձվածք) Միշտ հաճելի է նոր մարդու հետ ծանոթանալը։"
+      }
+    ]
+  },
+  {
+    "word": "into",
+    "translation": "մեջ (շարժում ինչ-որ բանի ներսը); (փոխակերպում) -ի; (խոսակցական) սիրահարված, հետաքրքրված",
+    "examples": [
+      {
+        "sentence_en": "(movement) She walked into the room and sat down.",
+        "translation_am": "(շարժում) Նա մտավ սենյակ և նստեց։"
+      },
+      {
+        "sentence_en": "(transformation) Water turns into ice when it's cold.",
+        "translation_am": "(փոխակերպում) Ցրտին ջուրը վերածվում է սառույցի։"
+      },
+      {
+        "sentence_en": "(everyday) I'm really into hiking these days.",
+        "translation_am": "(խոսակցական) Այս վերջին ես իսկապես հետաքրքրված եմ արշավով։"
+      },
+      {
+        "sentence_en": "(math) Divide 10 into 2 equal parts.",
+        "translation_am": "(մաթեմատիկա) 10-ը բաժանիր 2 հավասար մասերի։"
+      },
+      {
+        "sentence_en": "(work) We turned the old warehouse into a modern office.",
+        "translation_am": "(աշխատանք) Մենք հին պահեստը վերածեցինք ժամանակակից գրասենյակի։"
+      }
+    ]
+  },
+  {
+    "word": "sick of",
+    "translation": "հոգնած ինչ-որ բանից, ձանձրացած, հոգեհատ (ինչ-որ բանից)",
+    "examples": [
+      {
+        "sentence_en": "(everyday) I'm sick of eating the same food every day.",
+        "translation_am": "(առօրյա) Ես հոգնել եմ ամեն օր նույն կերակուրը ուտելուց։"
+      },
+      {
+        "sentence_en": "(work) She's sick of her boss always changing his mind.",
+        "translation_am": "(աշխատանք) Նա հոգնել է իր ղեկավարի՝ մշտապես կարծիքը փոխելուց։"
+      },
+      {
+        "sentence_en": "(friends) I'm sick of waiting for you every time we meet.",
+        "translation_am": "(ընկերներ) Ես հոգնել եմ ամեն անգամ քեզ սպասելուց, երբ հանդիպում ենք։"
+      },
+      {
+        "sentence_en": "(weather) People here are sick of the constant rain.",
+        "translation_am": "(եղանակ) Այստեղի մարդիկ հոգնել են մշտական անձրևից։"
+      },
+      {
+        "sentence_en": "(news) Voters are sick of empty political promises.",
+        "translation_am": "(լուրեր) Ընտրողները հոգնել են դատարկ քաղաքական խոստումներից։"
+      }
+    ]
+  },
+  {
+    "word": "accumulated",
+    "translation": "կուտակված, հավաքված (accumulate-ի անցյալ ժամանակ)",
+    "examples": [
+      {
+        "sentence_en": "(finance) He accumulated a lot of debt over the years.",
+        "translation_am": "(ֆինանսներ) Տարիների ընթացքում նա շատ պարտք էր կուտակել։"
+      },
+      {
+        "sentence_en": "(everyday) Dust had accumulated on the shelves while we were away.",
+        "translation_am": "(առօրյա) Մեր բացակայության ընթացքում դարակների վրա փոշի էր կուտակվել։"
+      },
+      {
+        "sentence_en": "(work) She accumulated a lot of experience while working abroad.",
+        "translation_am": "(աշխատանք) Արտերկրում աշխատելիս նա շատ փորձ էր կուտակել։"
+      },
+      {
+        "sentence_en": "(weather) Heavy snow accumulated on the roads overnight.",
+        "translation_am": "(եղանակ) Գիշերվա ընթացքում ճանապարհների վրա շատ ձյուն էր կուտակվել։"
+      },
+      {
+        "sentence_en": "(programming) Errors accumulated in the log file over several weeks.",
+        "translation_am": "(ծրագրավորում) Մի քանի շաբաթվա ընթացքում լոգ ֆայլում սխալներ էին կուտակվել։"
+      }
+    ]
+  },
+  {
+    "word": "engage",
+    "translation": "ներգրավել, ներգրավվել, զբաղեցնել (ուշադրությունը); (պաշտոնական) վարձել, ներգրավել աշխատանքի; նշանվել",
+    "examples": [
+      {
+        "sentence_en": "(teaching) The teacher tried to engage the students with fun activities.",
+        "translation_am": "(ուսուցում) Ուսուցիչը փորձեց աշակերտներին ներգրավել զվարճալի խաղերով։"
+      },
+      {
+        "sentence_en": "(marketing) The company uses social media to engage its customers.",
+        "translation_am": "(մարքեթինգ) Ընկերությունը սոցիալական ցանցեր է օգտագործում իր հաճախորդներին ներգրավելու համար։"
+      },
+      {
+        "sentence_en": "(relationship) They got engaged last summer and will marry next year.",
+        "translation_am": "(հարաբերություններ) Նրանք անցյալ ամառ նշանվեցին և հաջորդ տարի կամուսնանան։"
+      },
+      {
+        "sentence_en": "(meeting) It's hard to engage in a real conversation with him.",
+        "translation_am": "(հանդիպում) Նրա հետ իրական զրույցի մեջ մտնելը դժվար է։"
+      },
+      {
+        "sentence_en": "(work) The company engaged a lawyer to handle the case.",
+        "translation_am": "(աշխատանք) Ընկերությունը փաստաբան վարձեց, որ զբաղվի գործով։"
+      }
+    ]
+  }
+]

@@ -1,0 +1,1600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DictCreator - Vocabulary Trainer</title>
+  <style>
+    :root {
+      --bg-primary: #0f172a;
+      --bg-secondary: #1e293b;
+      --bg-tertiary: #334155;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #0284c7;
+      --success: #10b981;
+      --success-bg: rgba(16, 185, 129, 0.15);
+      --danger: #ef4444;
+      --danger-hover: #dc2626;
+      --danger-bg: rgba(239, 68, 68, 0.15);
+      --warning: #f59e0b;
+      --border: #334155;
+      --card-bg: #1e293b;
+      --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+      --radius: 14px;
+      --radius-sm: 8px;
+      --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    [data-theme="light"] {
+      --bg-primary: #f8fafc;
+      --bg-secondary: #ffffff;
+      --bg-tertiary: #f1f5f9;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --accent: #0284c7;
+      --accent-hover: #0369a1;
+      --success: #059669;
+      --success-bg: rgba(5, 150, 105, 0.1);
+      --danger: #dc2626;
+      --danger-hover: #b91c1c;
+      --danger-bg: rgba(220, 38, 38, 0.1);
+      --warning: #d97706;
+      --border: #e2e8f0;
+      --card-bg: #ffffff;
+      --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.5;
+    }
+
+    /* Header */
+    header {
+      background-color: var(--bg-secondary);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding: 0.75rem 1.5rem;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--text-main);
+      text-decoration: none;
+    }
+
+    .brand-icon {
+      background: linear-gradient(135deg, var(--accent), #6366f1);
+      color: white;
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+
+    .controls-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    select, input, button {
+      font-family: inherit;
+      font-size: 0.9rem;
+    }
+
+    .select-styled {
+      background-color: var(--bg-tertiary);
+      color: var(--text-main);
+      border: 1px solid var(--border);
+      padding: 0.45rem 0.85rem;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .select-styled:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+    }
+
+    .theme-toggle {
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .theme-toggle:hover {
+      background-color: var(--border);
+    }
+
+    /* Tabs */
+    .tabs-nav {
+      background-color: var(--bg-secondary);
+      border-bottom: 1px solid var(--border);
+      padding: 0 1.5rem;
+    }
+
+    .tabs-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      padding: 0.85rem 1.25rem;
+      font-weight: 600;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-main);
+    }
+
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* Main Container */
+    main {
+      flex: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      width: 100%;
+    }
+
+    /* Tab Contents */
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.25s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Flashcard View */
+    .flashcard-wrapper {
+      max-width: 680px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .progress-bar-container {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .progress-info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background-color: var(--bg-tertiary);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), #818cf8);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--card-shadow);
+      padding: 2.5rem 2rem;
+      position: relative;
+      min-height: 380px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      cursor: pointer;
+      user-select: none;
+      transition: var(--transition);
+    }
+
+    .card:hover {
+      border-color: rgba(56, 189, 248, 0.4);
+    }
+
+    .card-badge {
+      position: absolute;
+      top: 1.25rem;
+      left: 1.25rem;
+      background: var(--bg-tertiary);
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+
+    .speaker-btn {
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border);
+      color: var(--accent);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+      margin-left: 0.75rem;
+      vertical-align: middle;
+    }
+
+    .speaker-btn:hover {
+      background-color: var(--accent);
+      color: white;
+      transform: scale(1.08);
+    }
+
+    .card-word-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .card-reveal-hint {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .revealed-content {
+      width: 100%;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px dashed var(--border);
+      text-align: left;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .translation-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #38bdf8;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .examples-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      max-height: 220px;
+      overflow-y: auto;
+      padding-right: 0.5rem;
+    }
+
+    .example-item {
+      background-color: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      font-size: 0.9rem;
+    }
+
+    .example-en {
+      color: var(--text-main);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .example-speaker {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 0.85rem;
+      padding: 0.2rem;
+      border-radius: 4px;
+    }
+    .example-speaker:hover {
+      color: var(--accent);
+    }
+
+    .example-am {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    /* Actions Bar */
+    .card-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.2fr;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      border: none;
+      padding: 0.75rem 1.25rem;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn-secondary {
+      background-color: var(--bg-secondary);
+      color: var(--text-main);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover {
+      background-color: var(--bg-tertiary);
+    }
+
+    .btn-primary {
+      background-color: var(--accent);
+      color: #0f172a;
+      font-weight: 700;
+    }
+    .btn-primary:hover {
+      background-color: var(--accent-hover);
+      color: white;
+    }
+
+    .btn-success {
+      background-color: var(--success);
+      color: white;
+    }
+    .btn-success:hover {
+      background-color: #0d9488;
+    }
+
+    .btn-danger {
+      background-color: var(--danger-bg);
+      color: var(--danger);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+    .btn-danger:hover {
+      background-color: var(--danger);
+      color: white;
+    }
+
+    /* Keyboard shortcuts helper */
+    .shortcuts-bar {
+      display: flex;
+      justify-content: center;
+      gap: 1.25rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+    }
+
+    .kbd {
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border);
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 0.75rem;
+      color: var(--text-main);
+    }
+
+    /* Quiz Tab */
+    .quiz-container {
+      max-width: 680px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .quiz-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--card-shadow);
+      padding: 2.5rem 2rem;
+      position: relative;
+    }
+
+    .quiz-prompt {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .quiz-label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .quiz-word {
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .quiz-input-group {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .quiz-input {
+      flex: 1;
+      background-color: var(--bg-primary);
+      border: 2px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 0.85rem 1rem;
+      color: var(--text-main);
+      font-size: 1.1rem;
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .quiz-input:focus {
+      border-color: var(--accent);
+    }
+
+    .quiz-feedback {
+      padding: 1rem;
+      border-radius: var(--radius-sm);
+      margin-bottom: 1.5rem;
+      display: none;
+      animation: fadeIn 0.2s ease;
+    }
+
+    .quiz-feedback.correct {
+      display: block;
+      background-color: var(--success-bg);
+      border: 1px solid var(--success);
+      color: var(--success);
+    }
+
+    .quiz-feedback.wrong {
+      display: block;
+      background-color: var(--danger-bg);
+      border: 1px solid var(--danger);
+      color: var(--danger);
+    }
+
+    /* Dictionary Tab (Words Management) */
+    .dict-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .search-input-wrapper {
+      position: relative;
+      flex: 1;
+      max-width: 450px;
+    }
+
+    .search-input {
+      width: 100%;
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 0.65rem 1rem 0.65rem 2.5rem;
+      color: var(--text-main);
+      outline: none;
+      transition: var(--transition);
+    }
+    .search-input:focus {
+      border-color: var(--accent);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 0.85rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .words-table-wrapper {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--card-shadow);
+      overflow: hidden;
+    }
+
+    .table-container {
+      overflow-x: auto;
+      max-height: 600px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    th {
+      background-color: var(--bg-tertiary);
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.85rem 1.25rem;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    td {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
+
+    tr:hover td {
+      background-color: rgba(255, 255, 255, 0.02);
+    }
+
+    .word-cell {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .word-actions {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: flex-end;
+    }
+
+    .btn-icon {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      width: 34px;
+      height: 34px;
+      border-radius: var(--radius-sm);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .btn-icon:hover {
+      color: var(--text-main);
+      background-color: var(--bg-tertiary);
+    }
+
+    .btn-icon.delete-btn:hover {
+      background-color: var(--danger-bg);
+      color: var(--danger);
+      border-color: var(--danger);
+    }
+
+    /* Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      animation: fadeIn 0.2s ease;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+      width: 100%;
+      max-width: 520px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .modal-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .form-input, .form-textarea {
+      background-color: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 0.65rem 0.85rem;
+      color: var(--text-main);
+      font-family: inherit;
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .form-input:focus, .form-textarea:focus {
+      border-color: var(--accent);
+    }
+
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    /* Toast Notifications */
+    .toast-container {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 200;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      pointer-events: none;
+    }
+
+    .toast {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      box-shadow: var(--card-shadow);
+      padding: 0.85rem 1.25rem;
+      color: var(--text-main);
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      animation: slideInRight 0.3s ease;
+      pointer-events: auto;
+      max-width: 360px;
+    }
+
+    .toast.success {
+      border-left: 4px solid var(--success);
+    }
+    .toast.danger {
+      border-left: 4px solid var(--danger);
+    }
+
+    @keyframes slideInRight {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    /* Empty states */
+    .empty-state {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: var(--text-muted);
+    }
+    .empty-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .header-container {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .card-actions {
+        grid-template-columns: 1fr;
+      }
+      .quiz-input-group {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <a href="#" class="brand">
+        <div class="brand-icon">📚</div>
+        <span>DictCreator</span>
+      </a>
+
+      <div class="controls-bar">
+        <select id="folderSelect" class="select-styled" title="Select Folder">
+          <option value="data">📁 data (English / Default)</option>
+          <option value="data_for_fr">📁 data_for_fr (French)</option>
+        </select>
+
+        <select id="fileSelect" class="select-styled" title="Select File">
+          <option value="">Loading files...</option>
+        </select>
+
+        <button id="themeBtn" class="theme-toggle" title="Toggle Theme">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation Tabs -->
+  <nav class="tabs-nav">
+    <div class="tabs-container">
+      <button class="tab-btn active" data-tab="cards">
+        <span>🗂️</span> Cards Practice
+      </button>
+      <button class="tab-btn" data-tab="quiz">
+        <span>✍️</span> Quiz & Typing
+      </button>
+      <button class="tab-btn" data-tab="dictionary">
+        <span>📖</span> JSON Dictionary (<span id="wordsCountBadge">0</span>)
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main View -->
+  <main>
+
+    <!-- Tab 1: Cards Practice -->
+    <div id="tab-cards" class="tab-content active">
+      <div class="flashcard-wrapper">
+        <div class="progress-bar-container">
+          <div class="progress-info">
+            <span id="cardProgressText">Card 0 of 0</span>
+            <span id="cardQueueText">Queue: 0 remaining</span>
+          </div>
+          <div class="progress-bar">
+            <div id="cardProgressFill" class="progress-fill"></div>
+          </div>
+        </div>
+
+        <div id="flashCard" class="card" title="Click or press Space to reveal translation">
+          <div class="card-badge" id="cardBadge">#1</div>
+          
+          <div class="card-word-title">
+            <span id="currentWordText">Loading...</span>
+            <button id="cardSpeakerBtn" class="speaker-btn" title="Pronounce word (P)">🔊</button>
+          </div>
+
+          <div id="cardRevealHint" class="card-reveal-hint">
+            <span>💡 Click card or press <b>Space</b> to reveal</span>
+          </div>
+
+          <div id="cardRevealedContent" class="revealed-content" style="display: none;">
+            <div class="translation-title" id="currentTranslationText">Translation</div>
+            <div class="examples-list" id="currentExamplesList">
+              <!-- Example items injected here -->
+            </div>
+          </div>
+        </div>
+
+        <div class="card-actions">
+          <button id="skipBtn" class="btn btn-secondary" title="Repeat later (2 or ↓)">
+            <span>🔄</span> Review Later
+          </button>
+          <button id="knowBtn" class="btn btn-success" title="Known word (1 or →)">
+            <span>✅</span> I Know This
+          </button>
+          <button id="deleteWordBtn" class="btn btn-danger" title="Permanently delete word from JSON (Del)">
+            <span>🗑️</span> Delete from JSON
+          </button>
+        </div>
+
+        <div class="shortcuts-bar">
+          <span><span class="kbd">Space</span> Reveal / Flip</span>
+          <span><span class="kbd">1</span> Know it</span>
+          <span><span class="kbd">2</span> Repeat later</span>
+          <span><span class="kbd">Del</span> Delete from JSON</span>
+          <span><span class="kbd">P</span> Pronounce</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 2: Quiz & Recall -->
+    <div id="tab-quiz" class="tab-content">
+      <div class="quiz-container">
+        <div class="quiz-card">
+          <div class="quiz-prompt">
+            <div class="quiz-label">Translate this to English:</div>
+            <div class="quiz-word" id="quizPromptWord">Loading...</div>
+          </div>
+
+          <div class="quiz-input-group">
+            <input type="text" id="quizInput" class="quiz-input" placeholder="Type the English translation..." autocomplete="off">
+            <button id="quizCheckBtn" class="btn btn-primary">Check</button>
+          </div>
+
+          <div id="quizFeedback" class="quiz-feedback"></div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem;">
+            <button id="quizSkipBtn" class="btn btn-secondary">Next Word ➔</button>
+            <button id="quizDeleteBtn" class="btn btn-danger" title="Delete this word from JSON">🗑️ Delete from JSON</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 3: JSON Dictionary & Management -->
+    <div id="tab-dictionary" class="tab-content">
+      <div class="dict-header">
+        <div class="search-input-wrapper">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="dictionarySearchInput" class="search-input" placeholder="Search words or translations...">
+        </div>
+
+        <div style="display: flex; gap: 0.75rem;">
+          <button id="addNewWordBtn" class="btn btn-primary">
+            <span>➕</span> Add New Word
+          </button>
+        </div>
+      </div>
+
+      <div class="words-table-wrapper">
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 25%;">English Word</th>
+                <th style="width: 35%;">Translation</th>
+                <th style="width: 25%;">Examples</th>
+                <th style="width: 15%; text-align: right;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="dictionaryTableBody">
+              <!-- Word rows populated by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Delete Confirmation Modal -->
+  <div id="deleteModal" class="modal-backdrop">
+    <div class="modal">
+      <div class="modal-title" style="color: var(--danger);">
+        <span>🗑️</span> Delete Word Permanently
+      </div>
+      <p style="color: var(--text-muted);">
+        Are you sure you want to permanently delete <b id="deleteModalWordName" style="color: var(--text-main);"></b> from <span id="deleteModalFileName" style="color: var(--accent);"></span>?
+      </p>
+      <p style="font-size: 0.85rem; color: var(--danger);">
+        ⚠️ This word will be immediately erased directly from your JSON file on disk.
+      </p>
+      <div class="modal-actions">
+        <button id="cancelDeleteBtn" class="btn btn-secondary">Cancel</button>
+        <button id="confirmDeleteBtn" class="btn btn-danger">Yes, Delete from JSON</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Word Modal -->
+  <div id="addModal" class="modal-backdrop">
+    <div class="modal">
+      <div class="modal-title">
+        <span>➕</span> Add Word to JSON
+      </div>
+      <div class="form-group">
+        <label class="form-label">English Word</label>
+        <input type="text" id="newWordInput" class="form-input" placeholder="e.g. resilient" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Translation</label>
+        <input type="text" id="newTranslationInput" class="form-input" placeholder="e.g. ճկուն, դիմացկուն" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Example Sentence (English)</label>
+        <input type="text" id="newExEnInput" class="form-input" placeholder="e.g. She remained resilient through challenges.">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Example Sentence (Armenian / Translation)</label>
+        <input type="text" id="newExAmInput" class="form-input" placeholder="e.g. Նա դիմացկուն մնաց մարտահրավերների ժամանակ։">
+      </div>
+      <div class="modal-actions">
+        <button id="cancelAddBtn" class="btn btn-secondary">Cancel</button>
+        <button id="saveWordBtn" class="btn btn-primary">Save Word to JSON</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Word Modal -->
+  <div id="editModal" class="modal-backdrop">
+    <div class="modal">
+      <div class="modal-title">
+        <span>✏️</span> Edit Word in JSON
+      </div>
+      <input type="hidden" id="editOldWord">
+      <div class="form-group">
+        <label class="form-label">Word</label>
+        <input type="text" id="editWordInput" class="form-input" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Translation</label>
+        <input type="text" id="editTranslationInput" class="form-input" required>
+      </div>
+      <div class="modal-actions">
+        <button id="cancelEditBtn" class="btn btn-secondary">Cancel</button>
+        <button id="saveEditBtn" class="btn btn-primary">Update in JSON</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <script>
+    // --- Application State ---
+    const state = {
+      folder: 'data',
+      fileName: 'vocabulary.json',
+      allWords: [],
+      cardQueue: [],
+      currentIndex: 0,
+      isRevealed: false,
+      learnedCount: 0,
+      totalCount: 0,
+      quizWord: null,
+      theme: localStorage.getItem('dict_theme') || 'dark'
+    };
+
+    // --- DOM Elements ---
+    const folderSelect = document.getElementById('folderSelect');
+    const fileSelect = document.getElementById('fileSelect');
+    const themeBtn = document.getElementById('themeBtn');
+    const wordsCountBadge = document.getElementById('wordsCountBadge');
+
+    // Cards DOM
+    const flashCard = document.getElementById('flashCard');
+    const currentWordText = document.getElementById('currentWordText');
+    const cardSpeakerBtn = document.getElementById('cardSpeakerBtn');
+    const cardBadge = document.getElementById('cardBadge');
+    const cardRevealHint = document.getElementById('cardRevealHint');
+    const cardRevealedContent = document.getElementById('cardRevealedContent');
+    const currentTranslationText = document.getElementById('currentTranslationText');
+    const currentExamplesList = document.getElementById('currentExamplesList');
+    const cardProgressText = document.getElementById('cardProgressText');
+    const cardQueueText = document.getElementById('cardQueueText');
+    const cardProgressFill = document.getElementById('cardProgressFill');
+    const knowBtn = document.getElementById('knowBtn');
+    const skipBtn = document.getElementById('skipBtn');
+    const deleteWordBtn = document.getElementById('deleteWordBtn');
+
+    // Quiz DOM
+    const quizPromptWord = document.getElementById('quizPromptWord');
+    const quizInput = document.getElementById('quizInput');
+    const quizCheckBtn = document.getElementById('quizCheckBtn');
+    const quizFeedback = document.getElementById('quizFeedback');
+    const quizSkipBtn = document.getElementById('quizSkipBtn');
+    const quizDeleteBtn = document.getElementById('quizDeleteBtn');
+
+    // Dictionary DOM
+    const dictionarySearchInput = document.getElementById('dictionarySearchInput');
+    const dictionaryTableBody = document.getElementById('dictionaryTableBody');
+    const addNewWordBtn = document.getElementById('addNewWordBtn');
+
+    // Modals DOM
+    const deleteModal = document.getElementById('deleteModal');
+    const deleteModalWordName = document.getElementById('deleteModalWordName');
+    const deleteModalFileName = document.getElementById('deleteModalFileName');
+    const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
+    const cancelDeleteBtn = document.getElementById('cancelDeleteBtn');
+
+    const addModal = document.getElementById('addModal');
+    const newWordInput = document.getElementById('newWordInput');
+    const newTranslationInput = document.getElementById('newTranslationInput');
+    const newExEnInput = document.getElementById('newExEnInput');
+    const newExAmInput = document.getElementById('newExAmInput');
+    const saveWordBtn = document.getElementById('saveWordBtn');
+    const cancelAddBtn = document.getElementById('cancelAddBtn');
+
+    const editModal = document.getElementById('editModal');
+    const editOldWord = document.getElementById('editOldWord');
+    const editWordInput = document.getElementById('editWordInput');
+    const editTranslationInput = document.getElementById('editTranslationInput');
+    const saveEditBtn = document.getElementById('saveEditBtn');
+    const cancelEditBtn = document.getElementById('cancelEditBtn');
+
+    let pendingDeleteWord = null;
+
+    // --- Audio Speech Synthesis ---
+    function speakText(text) {
+      if (!('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+      const clean = text.replace(/^\([^)]*\)\s*/, ''); // remove tags like (literary)
+      const utterance = new SpeechSynthesisUtterance(clean);
+      utterance.lang = state.folder === 'data_for_fr' ? 'fr-FR' : 'en-US';
+      utterance.rate = 0.95;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    // --- Toast Notifications ---
+    function showToast(message, type = 'info') {
+      const container = document.getElementById('toastContainer');
+      const toast = document.createElement('div');
+      toast.className = `toast ${type}`;
+      toast.innerHTML = `<span>${type === 'danger' ? '🗑️' : type === 'success' ? '✅' : 'ℹ️'}</span> <span>${message}</span>`;
+      container.appendChild(toast);
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateY(10px)';
+        setTimeout(() => toast.remove(), 300);
+      }, 3500);
+    }
+
+    // --- Theme Handling ---
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      themeBtn.textContent = theme === 'dark' ? '🌙' : '☀️';
+      localStorage.setItem('dict_theme', theme);
+      state.theme = theme;
+    }
+
+    themeBtn.addEventListener('click', () => {
+      applyTheme(state.theme === 'dark' ? 'light' : 'dark');
+    });
+
+    // --- Tab Switching ---
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        btn.classList.add('active');
+        const tabId = `tab-${btn.dataset.tab}`;
+        document.getElementById(tabId).classList.add('active');
+
+        if (btn.dataset.tab === 'quiz') {
+          initQuizWord();
+        } else if (btn.dataset.tab === 'dictionary') {
+          renderDictionaryTable();
+        }
+      });
+    });
+
+    // --- API Calls ---
+    async function loadFiles() {
+      try {
+        const res = await fetch(`/api/files?folder=${state.folder}`);
+        const data = await res.json();
+        fileSelect.innerHTML = '';
+        data.files.forEach(f => {
+          const opt = document.createElement('option');
+          opt.value = f.filename;
+          opt.textContent = `${f.filename} (${f.word_count} words)`;
+          if (f.filename === state.fileName || f.is_json) {
+            opt.selected = true;
+            state.fileName = f.filename;
+          }
+          fileSelect.appendChild(opt);
+        });
+        if (!state.fileName && data.files.length > 0) {
+          state.fileName = data.files[0].filename;
+        }
+        await loadWords();
+      } catch (err) {
+        showToast('Error loading files: ' + err.message, 'danger');
+      }
+    }
+
+    async function loadWords() {
+      if (!state.fileName) return;
+      try {
+        const res = await fetch(`/api/words?folder=${state.folder}&file=${encodeURIComponent(state.fileName)}`);
+        const data = await res.json();
+        if (data.error) throw new Error(data.error);
+
+        state.allWords = data.words || [];
+        state.cardQueue = [...state.allWords];
+        state.totalCount = state.allWords.length;
+        state.learnedCount = 0;
+        wordsCountBadge.textContent = state.totalCount;
+
+        updateCardDisplay();
+        renderDictionaryTable();
+        initQuizWord();
+      } catch (err) {
+        showToast('Error loading words: ' + err.message, 'danger');
+      }
+    }
+
+    // --- Delete Word Directly From JSON ---
+    function openDeleteModal(word) {
+      pendingDeleteWord = word;
+      deleteModalWordName.textContent = `"${word}"`;
+      deleteModalFileName.textContent = state.fileName;
+      deleteModal.classList.add('open');
+    }
+
+    cancelDeleteBtn.addEventListener('click', () => {
+      deleteModal.classList.remove('open');
+      pendingDeleteWord = null;
+    });
+
+    confirmDeleteBtn.addEventListener('click', async () => {
+      if (!pendingDeleteWord) return;
+      const wordToDelete = pendingDeleteWord;
+      deleteModal.classList.remove('open');
+
+      try {
+        const res = await fetch('/api/delete_word', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            folder: state.folder,
+            file: state.fileName,
+            word: wordToDelete
+          })
+        });
+        const result = await res.json();
+
+        if (result.success) {
+          showToast(`Deleted "${wordToDelete}" directly from ${state.fileName}!`, 'success');
+
+          // Update local state
+          state.allWords = state.allWords.filter(w => w.word.toLowerCase() !== wordToDelete.toLowerCase());
+          state.cardQueue = state.cardQueue.filter(w => w.word.toLowerCase() !== wordToDelete.toLowerCase());
+          state.totalCount = state.allWords.length;
+          wordsCountBadge.textContent = state.totalCount;
+
+          // Refresh UI
+          updateCardDisplay();
+          renderDictionaryTable();
+          if (state.quizWord && state.quizWord.word.toLowerCase() === wordToDelete.toLowerCase()) {
+            initQuizWord();
+          }
+        } else {
+          showToast('Failed to delete word: ' + (result.error || 'Unknown error'), 'danger');
+        }
+      } catch (err) {
+        showToast('Network error: ' + err.message, 'danger');
+      }
+      pendingDeleteWord = null;
+    });
+
+    // --- Cards / Flashcard Logic ---
+    function updateCardDisplay() {
+      if (state.cardQueue.length === 0) {
+        currentWordText.textContent = state.totalCount > 0 ? "🎉 All words reviewed!" : "No words in file";
+        cardSpeakerBtn.style.display = 'none';
+        cardBadge.textContent = "Done";
+        cardRevealHint.style.display = 'none';
+        cardRevealedContent.style.display = 'none';
+        cardProgressText.textContent = `Done ${state.learnedCount} of ${state.totalCount}`;
+        cardQueueText.textContent = "Queue empty";
+        cardProgressFill.style.width = '100%';
+        return;
+      }
+
+      const item = state.cardQueue[0];
+      currentWordText.textContent = item.word;
+      cardSpeakerBtn.style.display = 'inline-flex';
+      cardBadge.textContent = `#${state.totalCount - state.cardQueue.length + 1}`;
+      currentTranslationText.textContent = item.translation || "(No translation)";
+
+      // Build examples
+      currentExamplesList.innerHTML = '';
+      if (item.examples && item.examples.length > 0) {
+        item.examples.forEach(ex => {
+          const div = document.createElement('div');
+          div.className = 'example-item';
+          const enText = ex.sentence_en || '';
+          const amText = ex.translation_am || '';
+          div.innerHTML = `
+            <div class="example-en">
+              <span>${enText}</span>
+              <button class="example-speaker" title="Pronounce sentence">🔊</button>
+            </div>
+            ${amText ? `<div class="example-am">${amText}</div>` : ''}
+          `;
+          const spkBtn = div.querySelector('.example-speaker');
+          spkBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            speakText(enText);
+          });
+          currentExamplesList.appendChild(div);
+        });
+      } else {
+        currentExamplesList.innerHTML = '<div style="color: var(--text-muted); font-size: 0.85rem; font-style: italic;">No example sentences provided.</div>';
+      }
+
+      state.isRevealed = false;
+      cardRevealHint.style.display = 'flex';
+      cardRevealedContent.style.display = 'none';
+
+      const progressPct = Math.round((state.learnedCount / Math.max(state.totalCount, 1)) * 100);
+      cardProgressFill.style.width = `${progressPct}%`;
+      cardProgressText.textContent = `Progress: ${state.learnedCount} / ${state.totalCount} words`;
+      cardQueueText.textContent = `Queue: ${state.cardQueue.length} words`;
+    }
+
+    function toggleCardReveal() {
+      if (state.cardQueue.length === 0) return;
+      state.isRevealed = !state.isRevealed;
+      if (state.isRevealed) {
+        cardRevealHint.style.display = 'none';
+        cardRevealedContent.style.display = 'block';
+      } else {
+        cardRevealHint.style.display = 'flex';
+        cardRevealedContent.style.display = 'none';
+      }
+    }
+
+    flashCard.addEventListener('click', (e) => {
+      if (e.target.closest('#cardSpeakerBtn') || e.target.closest('.example-speaker')) return;
+      toggleCardReveal();
+    });
+
+    cardSpeakerBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (state.cardQueue.length > 0) {
+        speakText(state.cardQueue[0].word);
+      }
+    });
+
+    knowBtn.addEventListener('click', () => {
+      if (state.cardQueue.length === 0) return;
+      state.cardQueue.shift();
+      state.learnedCount++;
+      updateCardDisplay();
+    });
+
+    skipBtn.addEventListener('click', () => {
+      if (state.cardQueue.length <= 1) return;
+      const moved = state.cardQueue.shift();
+      state.cardQueue.push(moved);
+      updateCardDisplay();
+    });
+
+    deleteWordBtn.addEventListener('click', () => {
+      if (state.cardQueue.length === 0) return;
+      openDeleteModal(state.cardQueue[0].word);
+    });
+
+    // --- Quiz Logic ---
+    function initQuizWord() {
+      if (state.allWords.length === 0) {
+        quizPromptWord.textContent = "No words available";
+        return;
+      }
+      const randomIdx = Math.floor(Math.random() * state.allWords.length);
+      state.quizWord = state.allWords[randomIdx];
+      quizPromptWord.textContent = state.quizWord.translation || "(No translation)";
+      quizInput.value = '';
+      quizFeedback.className = 'quiz-feedback';
+      quizFeedback.style.display = 'none';
+      quizInput.focus();
+    }
+
+    quizCheckBtn.addEventListener('click', checkQuizAnswer);
+    quizInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') checkQuizAnswer();
+    });
+
+    function checkQuizAnswer() {
+      if (!state.quizWord) return;
+      const input = quizInput.value.trim().toLowerCase();
+      const target = state.quizWord.word.trim().toLowerCase();
+
+      if (input === target) {
+        quizFeedback.className = 'quiz-feedback correct';
+        quizFeedback.innerHTML = `<b>Correct! 🎉</b> The word is <b>${state.quizWord.word}</b>.`;
+        speakText(state.quizWord.word);
+      } else {
+        quizFeedback.className = 'quiz-feedback wrong';
+        quizFeedback.innerHTML = `<b>Not quite!</b> The correct English word is: <b>${state.quizWord.word}</b>.`;
+      }
+    }
+
+    quizSkipBtn.addEventListener('click', initQuizWord);
+    quizDeleteBtn.addEventListener('click', () => {
+      if (state.quizWord) openDeleteModal(state.quizWord.word);
+    });
+
+    // --- Dictionary Table Logic ---
+    function renderDictionaryTable() {
+      const query = dictionarySearchInput.value.trim().toLowerCase();
+      const filtered = state.allWords.filter(item => {
+        const w = item.word.toLowerCase();
+        const tr = (item.translation || '').toLowerCase();
+        return w.includes(query) || tr.includes(query);
+      });
+
+      dictionaryTableBody.innerHTML = '';
+      if (filtered.length === 0) {
+        dictionaryTableBody.innerHTML = `
+          <tr>
+            <td colspan="4" class="empty-state">
+              <div class="empty-icon">🔍</div>
+              <div>No words found matching "${query}"</div>
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      filtered.forEach(item => {
+        const tr = document.createElement('tr');
+        const exCount = (item.examples || []).length;
+        tr.innerHTML = `
+          <td>
+            <div class="word-cell">
+              <span>${item.word}</span>
+              <button class="speaker-btn" style="width: 28px; height: 28px; font-size: 0.8rem;" title="Pronounce">🔊</button>
+            </div>
+          </td>
+          <td><span style="color: var(--accent); font-weight: 500;">${item.translation || '—'}</span></td>
+          <td><span style="font-size: 0.85rem; color: var(--text-muted);">${exCount} example sentences</span></td>
+          <td>
+            <div class="word-actions">
+              <button class="btn-icon edit-btn" title="Edit in JSON">✏️</button>
+              <button class="btn-icon delete-btn" title="Delete directly from JSON">🗑️</button>
+            </div>
+          </td>
+        `;
+
+        tr.querySelector('.speaker-btn').addEventListener('click', () => speakText(item.word));
+        tr.querySelector('.delete-btn').addEventListener('click', () => openDeleteModal(item.word));
+        tr.querySelector('.edit-btn').addEventListener('click', () => openEditModal(item));
+
+        dictionaryTableBody.appendChild(tr);
+      });
+    }
+
+    dictionarySearchInput.addEventListener('input', renderDictionaryTable);
+
+    // --- Add Word Modal Logic ---
+    addNewWordBtn.addEventListener('click', () => {
+      newWordInput.value = '';
+      newTranslationInput.value = '';
+      newExEnInput.value = '';
+      newExAmInput.value = '';
+      addModal.classList.add('open');
+      newWordInput.focus();
+    });
+
+    cancelAddBtn.addEventListener('click', () => addModal.classList.remove('open'));
+
+    saveWordBtn.addEventListener('click', async () => {
+      const word = newWordInput.value.trim();
+      const translation = newTranslationInput.value.trim();
+      if (!word) {
+        showToast('Please enter an English word', 'danger');
+        return;
+      }
+
+      const examples = [];
+      const exEn = newExEnInput.value.trim();
+      const exAm = newExAmInput.value.trim();
+      if (exEn || exAm) {
+        examples.push({ sentence_en: exEn, translation_am: exAm });
+      }
+
+      try {
+        const res = await fetch('/api/add_word', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            folder: state.folder,
+            file: state.fileName,
+            word,
+            translation,
+            examples
+          })
+        });
+        const result = await res.json();
+        if (result.success) {
+          showToast(`Added "${word}" directly to ${state.fileName}!`, 'success');
+          addModal.classList.remove('open');
+          await loadWords();
+        } else {
+          showToast('Failed to add word: ' + (result.error || 'Unknown error'), 'danger');
+        }
+      } catch (err) {
+        showToast('Error: ' + err.message, 'danger');
+      }
+    });
+
+    // --- Edit Word Modal Logic ---
+    function openEditModal(item) {
+      editOldWord.value = item.word;
+      editWordInput.value = item.word;
+      editTranslationInput.value = item.translation || '';
+      editModal.classList.add('open');
+      editWordInput.focus();
+    }
+
+    cancelEditBtn.addEventListener('click', () => editModal.classList.remove('open'));
+
+    saveEditBtn.addEventListener('click', async () => {
+      const old_word = editOldWord.value.trim();
+      const new_word = editWordInput.value.trim();
+      const translation = editTranslationInput.value.trim();
+
+      if (!new_word) {
+        showToast('Word cannot be empty', 'danger');
+        return;
+      }
+
+      try {
+        const res = await fetch('/api/update_word', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            folder: state.folder,
+            file: state.fileName,
+            old_word,
+            new_word,
+            translation
+          })
+        });
+        const result = await res.json();
+        if (result.success) {
+          showToast(`Updated "${new_word}" in ${state.fileName}!`, 'success');
+          editModal.classList.remove('open');
+          await loadWords();
+        } else {
+          showToast('Error: ' + result.error, 'danger');
+        }
+      } catch (err) {
+        showToast('Error: ' + err.message, 'danger');
+      }
+    });
+
+    // --- Select Controls Events ---
+    folderSelect.addEventListener('change', async (e) => {
+      state.folder = e.target.value;
+      await loadFiles();
+    });
+
+    fileSelect.addEventListener('change', async (e) => {
+      state.fileName = e.target.value;
+      await loadWords();
+    });
+
+    // --- Keyboard Shortcuts Navigation ---
+    window.addEventListener('keydown', (e) => {
+      // Ignore if user is typing in an input field
+      if (['INPUT', 'TEXTAREA'].includes(e.target.tagName)) return;
+      if (deleteModal.classList.contains('open') || addModal.classList.contains('open') || editModal.classList.contains('open')) return;
+
+      const activeTab = document.querySelector('.tab-btn.active').dataset.tab;
+
+      if (activeTab === 'cards') {
+        if (e.code === 'Space') {
+          e.preventDefault();
+          toggleCardReveal();
+        } else if (e.key === '1' || e.key === 'ArrowRight') {
+          knowBtn.click();
+        } else if (e.key === '2' || e.key === 'ArrowDown') {
+          skipBtn.click();
+        } else if (e.key === 'Delete' || e.key === 'Backspace') {
+          deleteWordBtn.click();
+        } else if (e.key.toLowerCase() === 'p') {
+          cardSpeakerBtn.click();
+        }
+      }
+    });
+
+    // --- Initial Launch ---
+    applyTheme(state.theme);
+    loadFiles();
+  </script>
+</body>
+</html>
