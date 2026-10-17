@@ -318,12 +318,67 @@
     }
 
     .card-reveal-hint {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      margin-top: 1rem;
-      display: flex;
+      color: var(--accent);
+      background-color: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 0.5rem 1.15rem;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      margin-top: 1.25rem;
+      display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 0.5rem;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .card-reveal-hint:hover {
+      background-color: var(--accent);
+      color: #0f172a;
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .card-reveal-hint:active {
+      transform: scale(0.97);
+    }
+
+    .card-hide-hint {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      margin-top: 1.25rem;
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background-color: var(--bg-primary);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: var(--transition);
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .card-hide-hint:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      background-color: var(--bg-tertiary);
+    }
+
+    .card-hide-hint:active {
+      transform: scale(0.97);
+    }
+
+    .mobile-only {
+      display: none;
     }
 
     .revealed-content {
@@ -1367,8 +1422,11 @@
         min-height: 54px;
         font-size: 1rem;
       }
-      .shortcuts-bar.desktop-only {
-        display: none;
+      .desktop-only {
+        display: none !important;
+      }
+      .mobile-only {
+        display: inline !important;
       }
       .mobile-gestures-hint {
         display: flex;
@@ -1497,14 +1555,20 @@
               <button id="cardSpeakerBtn" class="speaker-btn" title="Озвучить слово (клавиша P)">🔊</button>
             </div>
 
-            <div id="cardRevealHint" class="card-reveal-hint">
-              <span>💡 Нажмите или <b>Space</b> — показать перевод</span>
+            <div id="cardRevealHint" class="card-reveal-hint" role="button" tabindex="0" title="Показать перевод (Space)">
+              <span class="desktop-only">💡 Нажмите или <b>Space</b> — показать перевод</span>
+              <span class="mobile-only">💡 Показать перевод</span>
             </div>
 
             <div id="cardRevealedContent" class="revealed-content" style="display: none;">
               <div class="translation-title" id="currentTranslationText">Translation</div>
               <div class="examples-list" id="currentExamplesList">
                 <!-- Example items injected here -->
+              </div>
+              <div style="text-align: center;">
+                <div id="cardHideHint" class="card-hide-hint" role="button" tabindex="0" title="Скрыть перевод (Space)">
+                  <span>🔼 Скрыть перевод</span>
+                </div>
               </div>
             </div>
           </div>
@@ -1922,6 +1986,7 @@
     const cardBadge = document.getElementById('cardBadge');
     const cardRevealHint = document.getElementById('cardRevealHint');
     const cardRevealedContent = document.getElementById('cardRevealedContent');
+    const cardHideHint = document.getElementById('cardHideHint');
     const currentTranslationText = document.getElementById('currentTranslationText');
     const currentExamplesList = document.getElementById('currentExamplesList');
     const cardProgressText = document.getElementById('cardProgressText');
@@ -2465,7 +2530,7 @@
       }
 
       state.isRevealed = false;
-      cardRevealHint.style.display = 'flex';
+      cardRevealHint.style.display = 'inline-flex';
       cardRevealedContent.style.display = 'none';
 
       const progressPct = sessionTotal > 0 ? Math.round((state.learnedCount / sessionTotal) * 100) : 0;
@@ -2478,6 +2543,8 @@
       }
     }
 
+    let lastTouchEndTime = 0;
+
     function toggleCardReveal() {
       if (state.cardQueue.length === 0) return;
       state.isRevealed = !state.isRevealed;
@@ -2485,15 +2552,37 @@
         cardRevealHint.style.display = 'none';
         cardRevealedContent.style.display = 'block';
       } else {
-        cardRevealHint.style.display = 'flex';
+        cardRevealHint.style.display = 'inline-flex';
         cardRevealedContent.style.display = 'none';
       }
     }
 
     flashCard.addEventListener('click', (e) => {
+      // Ignore synthetic click event fired right after touchend on mobile devices (prevents double-toggle)
+      if (Date.now() - lastTouchEndTime < 650) return;
       if (e.target.closest('#cardSpeakerBtn') || e.target.closest('.example-speaker')) return;
+      // When revealed, scrolling or tapping inside examples should not toggle the card
+      if (state.isRevealed && e.target.closest('#currentExamplesList') && !e.target.closest('#cardHideHint')) return;
       toggleCardReveal();
     });
+
+    if (cardRevealHint) {
+      cardRevealHint.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          toggleCardReveal();
+        }
+      });
+    }
+
+    if (cardHideHint) {
+      cardHideHint.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          toggleCardReveal();
+        }
+      });
+    }
 
     cardSpeakerBtn.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -2596,6 +2685,7 @@
     let isSwiping = false;
 
     flashCard.addEventListener('touchstart', (e) => {
+      if (state.cardQueue.length === 0) return;
       if (e.target.closest('#cardSpeakerBtn') || e.target.closest('.example-speaker')) return;
       const t = e.touches[0];
       touchStartX = t.clientX;
@@ -2610,6 +2700,11 @@
       const t = e.touches[0];
       const dx = t.clientX - touchStartX;
       const dy = t.clientY - touchStartY;
+
+      // Allow natural vertical scrolling inside examples list
+      if (e.target.closest('#currentExamplesList') && Math.abs(dy) > Math.abs(dx)) {
+        return;
+      }
 
       if (Math.abs(dx) > Math.abs(dy)) {
         if (e.cancelable) e.preventDefault();
@@ -2639,6 +2734,7 @@
 
       swipeStampKnow.style.opacity = 0;
       swipeStampSkip.style.opacity = 0;
+      lastTouchEndTime = Date.now();
 
       if (dx > 85) {
         // Swipe Right -> Know
@@ -2664,8 +2760,12 @@
           flashCard.style.transition = '';
           skipBtn.click();
         }, 170);
-      } else if (Math.abs(dx) < 12 && Math.abs(dy) < 12 && dt < 350) {
-        // Quick tap -> Flip
+      } else if (Math.abs(dx) < 15 && Math.abs(dy) < 15 && dt < 700) {
+        // Tap without swipe -> Flip (immediate, cancel synthetic click)
+        if (state.isRevealed && e.target.closest('#currentExamplesList') && !e.target.closest('#cardHideHint')) {
+          return;
+        }
+        if (e.cancelable) e.preventDefault();
         toggleCardReveal();
       } else {
         // Snap back smoothly
